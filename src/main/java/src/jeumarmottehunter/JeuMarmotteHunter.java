@@ -23,7 +23,7 @@ public class JeuMarmotteHunter {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-		s<ystem.out.println('modification test pour GIT');
+        System.out.println("modification test pour GIT");
 		
         // TODO code application logic here
 
