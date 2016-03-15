@@ -1,1 +1,14 @@
-/target/
+.idea
+*.iml
+
+
+#Ignorer les livrables
+target
+src/java/build
+
+#Ignorer les config du projet
+src/java/nbproject
+
+
+src/main/ressources
+

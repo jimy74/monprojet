@@ -12,6 +12,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.TimerTask;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -23,23 +25,28 @@ public class JeuMarmotteHunter {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-		System.out.println("modification test pour GIT");
-		System.out.println("modification pour binome par 'Patrick'");
-		
-        // TODO code application logic here
+        
+        //Test de l�API SLF4J
+        Logger logger = LoggerFactory.getLogger(JeuMarmotteHunter.class);
+        logger.info("Mon premier log avec l'API mSLF4J");
+        //FIN Test de l�API SLF4J
 
+        //Modification de test de travail � plusieurs via GIT
+        System.out.println("modification test pour GIT");
+        System.out.println("modification pour binome par 'Patrick'");
+        //FIN Modification de test
+        
         //Instanciation des paramètres
         final Parametres param = new Parametres();
-        
+
         //Déclaration des variables
-        
         int vitesseDifficulte;
         int vitesseDifficulteEmperique;
         int pvMarmotte;
         int degat;
         int mondeTailleX;
         int mondeTailleY;
-        
+
         File fichierIniConfig = param.getFichierIni();
         if (fichierIniConfig != null) {
             param.lireFichierIni(fichierIniConfig);
@@ -88,32 +95,29 @@ public class JeuMarmotteHunter {
         TimerTask actionARepetee = new TimerTask() {
             @Override
             public void run() {
+
                 //Récupère le monde
                 Monde monde = timer.getMonde();
 
                 //Récupère une case vide aléatoire **ou** null
                 Case caseAlea = monde.getCaseVideAliatoire();
-                
+
                 //Si la case est bien trouvée
-                if (caseAlea != null)
-                {
+                if (caseAlea != null) {
                     //Pour debug: affiche la case
                     System.out.println(caseAlea);
 
                     //Crée une marmotte dans cette case
-                    Marmotte nouvelleMarmotte = new Marmotte(param.getPvMarmotte(),caseAlea);
+                    Marmotte nouvelleMarmotte = new Marmotte(param.getPvMarmotte(), caseAlea);
                 } else {
 
                     //toutes les cases sont occupèe, on perd un point
                     int score = param.getScore();
                     //si le le score peut être réduit
-                    if (score - 1 > 0)
-                    {
+                    if (score - 1 > 0) {
                         param.setScore(score - 1); //réduit le score de 1
-                    }
-                    //si le score est épuisé
-                    else
-                    {
+                    } //si le score est épuisé
+                    else {
                         timer.afficherTemps();
                         timer.cancel();
                     }
@@ -122,7 +126,6 @@ public class JeuMarmotteHunter {
                     timer.deplacerMarmottes();
 
                 }
-
 
                 //Affiche le temps du jeu
                 timer.afficherTemps();
