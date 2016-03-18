@@ -5,13 +5,17 @@
  */
 package jeumarmottehunter;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.File;
+import java.net.URL;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.TimerTask;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,11 +24,23 @@ import org.slf4j.LoggerFactory;
  * @author PARIS_JIMMY-ESIG
  */
 public class JeuMarmotteHunter {
-
+ 
+ 
+    public static final String getProjetPath(){
+      String rs = JeuMarmotteHunter.class.getResource("").getPath();
+      int posPremierSlash = StringUtils.ordinalIndexOf(rs,"/",1);
+        rs = new StringBuffer(rs).reverse().toString();
+        
+        System.out.println(StringUtils.ordinalIndexOf(rs,"/",4));
+        rs = rs.substring(StringUtils.ordinalIndexOf(rs,"/",4), rs.length()-posPremierSlash-1);
+        
+        rs = new StringBuffer(rs).reverse().toString();
+        return rs;        
+    }
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String... s) {
         
         //Test de l’API SLF4J
         Logger logger = LoggerFactory.getLogger(JeuMarmotteHunter.class);
