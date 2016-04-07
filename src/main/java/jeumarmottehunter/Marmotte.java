@@ -5,10 +5,8 @@
  */
 package jeumarmottehunter;
 
-import java.io.File;
 import javax.swing.ImageIcon;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
-import org.apache.commons.lang.StringUtils;
 
 /**
  *
@@ -16,10 +14,6 @@ import org.apache.commons.lang.StringUtils;
  */
 public class Marmotte 
 {
-    
-    private static final String LOCATION_IMG_MARMOTTE_1POINT = "src/main/resources/img/ImageMarmotte1Point.png";
-    
-    
     private int pv;
     private Case maCase;
 
@@ -29,8 +23,7 @@ public class Marmotte
      */
     public Marmotte(int pv,Case saCase) {
         this.pv = pv;
-        System.out.println(JeuMarmotteHunter.getProjetPath() + LOCATION_IMG_MARMOTTE_1POINT);
-        saCase.setIcon(new ImageIcon(JeuMarmotteHunter.getProjetPath() + LOCATION_IMG_MARMOTTE_1POINT)); //met une image de marmotte
+        saCase.setIcon(new ImageIcon(Case.class.getClassLoader().getResource("ImageMarmotte1Point.png"))); //met une image de marmotte
         saCase.setVide(false); //indique que la case n'est plus vide
         this.maCase = saCase;
     }
