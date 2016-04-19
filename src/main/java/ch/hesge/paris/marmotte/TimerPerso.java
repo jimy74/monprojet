@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package jeumarmottehunter;
+package ch.hesge.paris.marmotte;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -113,6 +113,7 @@ public class TimerPerso extends Timer {
         long difference =  (dateActuelle.getTime()-dateDebut.getTime())/(1000);
         System.out.println("Le jeu fonctionne depuis: " + difference + " sec");
     }
+    
     public void deplacerMarmottes(){
         //Pour toutes els marmottes
         for (Marmotte marmotte : marmottes)

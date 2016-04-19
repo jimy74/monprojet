@@ -1,4 +1,4 @@
-package jeumarmottehunter;
+package ch.hesge.paris.marmotte;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -49,9 +49,12 @@ public class Monde extends JFrame implements ActionListener {
         //Définit le Layout manager de la fenêtre en GridLayout de taille X,Y
         setLayout(new GridLayout(tailleX, tailleY));
         
-        
-        //Instanciation des cases ("parfois appelé le tableau ...")
-        
+        afficherCases();
+        afficherForm();
+
+    }
+
+    public void afficherCases(){
         //pour toutes les colonnes
         for (int y = 1; y <= tailleY; y++) {
             //pour toutes les lignes 
@@ -62,9 +65,13 @@ public class Monde extends JFrame implements ActionListener {
                 add(nouvelleCase); //ajoute la case au monde
             }
 
-        }
+        }        
     }
-
+    public void afficherForm(){
+        pack();
+        setLocationRelativeTo(null);
+        setVisible(true);        
+    }
     /**
      *
      * @param tailleX
@@ -114,41 +121,25 @@ public class Monde extends JFrame implements ActionListener {
      *
      * @return
      */
-    public Case getCaseVideAliatoire() {
-        Case caseTrouvee = null; //contient la case vide trouvée, ou null
-        
-        //On supose que l'on va toruvé une case vide, pour entré dans le while
-        boolean caseVideTrouve = true; //true si on trouve une case vide, si non false
+    public Case getCaseVideAliatoire() {      
+        boolean caseVideTrouve = true; 
 
-        while (caseTrouvee == null && caseVideTrouve)
+        while (caseVideTrouve)
         {
-            caseVideTrouve = false; //au début Case vide pas encore trouvée
+            caseVideTrouve = false; 
             Random alea = new Random();
-            int minX = 1;
-            int minY = 1;
-            int posX = alea.nextInt(tailleX - minX + 1) + minX;
-            int posY = alea.nextInt(tailleY - minY + 1) + minY;
-            //Pour toutes les cases
             for (Case uneCase : cases)
             {
-                //Si la case est vide
                 if (uneCase.isVide())
                 {
-                    caseVideTrouve = true; //indique que une case vide est trouvée
-                    //Si une la case est bien à la position trouvée aléatoirement
-                    if (posX == uneCase.getPositionX() &&
-                            posY == uneCase.getPositionY())
-                    {
+                    caseVideTrouve = true; 
+                    //Si la case est bien à la position trouvée aléatoirement
+                    if (alea.nextInt(tailleX) + 1 == uneCase.getPositionX() && alea.nextInt(tailleY) + 1 == uneCase.getPositionY())
                         return uneCase; //la case est retenue
-                    }
-                     else {
-                     
-                     }
                 }
-
             } 
         }
-        return caseTrouvee;
+        return null;
     }
 
     @Override

@@ -30,7 +30,9 @@
             </goals>
           </execution>
         </executions>
-        <configuration />
+        <configuration>
+          <generateGitPropertiesFile>true</generateGitPropertiesFile>
+        </configuration>
       </plugin>
       <plugin>
         <artifactId>maven-jar-plugin</artifactId>

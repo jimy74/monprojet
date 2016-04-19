@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package jeumarmottehunter;
+package ch.hesge.paris.marmotte;
 
 import java.util.*;
 import java.io.*;
@@ -174,6 +174,15 @@ public class Parametres {
      */
     public void lireFichierIni(File ini){
     
+    }
+    
+    public void charger(){
+        setMondeTailleX(3);
+        setMondeTailleY(3);
+        setPvMarmotte(1);
+        setVitesseDifficulte(1000);
+        setVitesseDifficulteEmperique(0);
+        setDegat(1);
     }
            
  
