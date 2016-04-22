@@ -47,7 +47,15 @@ public class Parametres {
  int mondeTailleY;
  
  
-
+    public void charger(){
+        setMondeTailleX(3);
+        setMondeTailleY(3);
+        setPvMarmotte(1);
+        setVitesseDifficulte(1000);
+        setVitesseDifficulteEmperique(0);
+        setDegat(1);
+    }
+    
  /**
   *
   * @param vitesseDifficulte
@@ -174,16 +182,6 @@ public class Parametres {
      */
     public void lireFichierIni(File ini){
     
-    }
-    
-    public void charger(){
-        setMondeTailleX(3);
-        setMondeTailleY(3);
-        setPvMarmotte(1);
-        setVitesseDifficulte(1000);
-        setVitesseDifficulteEmperique(0);
-        setDegat(1);
-    }
-           
+    }         
  
 }

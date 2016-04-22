@@ -21,6 +21,7 @@ public class JeuMarmotteHunter {
 
     private static Parametres param = new Parametres();
     private static TimerPerso timer = null;
+    private static Monde monde = null;
 
     /**
      * @param args the command line arguments
@@ -29,8 +30,11 @@ public class JeuMarmotteHunter {
 
         param.charger();
 
-        Monde monde = new Monde(param.getMondeTailleX(), param.getMondeTailleY());
-
+        monde = new Monde(param.getMondeTailleX(), param.getMondeTailleY());     
+        lancerTimer();
+    }
+    
+    public static void lancerTimer(){
         timer = new TimerPerso(param.getVitesseDifficulteEmperique(), param.getVitesseDifficulte());
 
         //Instancie le timer
@@ -45,32 +49,38 @@ public class JeuMarmotteHunter {
         };
 
         //Fait répéter l'action par le timer
-        timer.scheduleAtFixedRate(actionARepetee, (long) timer.getDifficulteEmperique(), timer.getTemps());
+        timer.scheduleAtFixedRate(actionARepetee, (long) timer.getDifficulteEmperique(), timer.getTemps());        
     }
 
+        
     private static void ajouterOuDeplacerMarmotteAlea() {
         Monde monde = timer.getMonde();
         Case caseAlea = monde.getCaseVideAliatoire();
         if (caseAlea != null) {
             new Marmotte(param.getPvMarmotte(), caseAlea);
         } else {
-            perdUnPoint();
+            param.setScore(perdUnPoint(param.getScore()));
             timer.deplacerMarmottes();
         }
         timer.afficherTemps();
     }
 
-    public static void perdUnPoint() {
-        //toutes les cases sont occupèe, on perd un point
-        int score = param.getScore();
+    public static int perdUnPoint(int score) {
         //si le le score peut être réduit
         if (score - 1 > 0) {
-            param.setScore(score - 1); //réduit le score de 1
+            return (score - 1); //réduit le score de 1
         } //si le score est épuisé
-        else {
+        else {          
             timer.afficherTemps();
             timer.cancel();
+            return score;
         }
     }
+    
+    //� utiliser seulement pour les Test
+    public static Parametres getParametres(){
+        return param;
+    }
+        
 
 }

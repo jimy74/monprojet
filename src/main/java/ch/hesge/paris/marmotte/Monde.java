@@ -27,7 +27,7 @@ public class Monde extends JFrame implements ActionListener {
     private int tailleY;
 
     //Constructeur
-    Monde(int tailleX, int tailleY) {
+    public Monde(int tailleX, int tailleY) {
         super("Titre");  //met le titre de la fenêtre
 
         this.tailleX = tailleX;
@@ -118,24 +118,24 @@ public class Monde extends JFrame implements ActionListener {
         this.cases = cases;
     }
     /**
-     *
+     * Doit imp�rativement trouver une case al�atoirement
      * @return
      */
     public Case getCaseVideAliatoire() {      
-        boolean caseVideTrouve = true; 
+        boolean caseVideTrouve = false; 
 
-        while (caseVideTrouve)
+        while (!caseVideTrouve)
         {
-            caseVideTrouve = false; 
             Random alea = new Random();
             for (Case uneCase : cases)
             {
                 if (uneCase.isVide())
                 {
-                    caseVideTrouve = true; 
                     //Si la case est bien à la position trouvée aléatoirement
-                    if (alea.nextInt(tailleX) + 1 == uneCase.getPositionX() && alea.nextInt(tailleY) + 1 == uneCase.getPositionY())
+                    if (alea.nextInt(tailleX) + 1 == uneCase.getPositionX() && alea.nextInt(tailleY) + 1 == uneCase.getPositionY()) {
+                        caseVideTrouve = true; 
                         return uneCase; //la case est retenue
+                    }
                 }
             } 
         }
