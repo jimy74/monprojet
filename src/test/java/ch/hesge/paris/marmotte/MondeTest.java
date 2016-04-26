@@ -15,5 +15,6 @@ public void setUp() {
     public void getCaseVideAliatoire_retourne_une_case_vraiment_vide() {
         Monde monde = new Monde(jeu.getParametres().getMondeTailleX(),jeu.getParametres().getMondeTailleY());
         assertNotNull(monde.getCaseVideAliatoire());
-    }   
+    }
+    
 }    

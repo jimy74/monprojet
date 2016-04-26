@@ -22,9 +22,9 @@ public class Marmotte
      */
     public Marmotte(int pv,Case saCase) {
         this.pv = pv;
-        saCase.setIcon(new ImageIcon(Case.class.getClassLoader().getResource("ImageMarmotte1Point.png"))); //met une image de marmotte
-        saCase.setVide(false); //indique que la case n'est plus vide
+        saCase.setVide(false);
         this.maCase = saCase;
+        putImgMarmotte();
     }
     
     /**
@@ -43,6 +43,9 @@ public class Marmotte
         return pv;
     }
 
+    public void putImgMarmotte(){
+        maCase.setIcon(new ImageIcon(Case.class.getClassLoader().getResource("ImageMarmotte1Point.png"))); //met une image de marmotte
+    }
     /**
      *
      * @param maCase
@@ -51,7 +54,7 @@ public class Marmotte
         this.maCase.setVide(true);
         this.maCase = maCase;
         maCase.setVide(false);
-        maCase.setIcon(new ImageIcon(Case.class.getClassLoader().getResource("ImageMarmotte1Point.png"))); //met une image de marmotte
+        putImgMarmotte();
     }
 
     /**

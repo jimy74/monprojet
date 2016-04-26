@@ -5,6 +5,8 @@
  */
 package ch.hesge.paris.marmotte;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.TimerTask;
 
 /**
@@ -17,21 +19,21 @@ public class JeuMarmotteHunter {
     private TimerPerso timer = null;
     private Monde monde = null;
 
-    public JeuMarmotteHunter(){
+    public JeuMarmotteHunter() {
         param.charger();
 
-        monde = new Monde(param.getMondeTailleX(), param.getMondeTailleY());     
-        lancerTimer();        
+        monde = new Monde(param.getMondeTailleX(), param.getMondeTailleY());
+        lancerTimer();
     }
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         JeuMarmotteHunter jeu = new JeuMarmotteHunter();
     }
-    
 
-    public void lancerTimer(){
+    public void lancerTimer() {
         timer = new TimerPerso(param.getVitesseDifficulteEmperique(), param.getVitesseDifficulte());
 
         //Instancie le timer
@@ -46,20 +48,18 @@ public class JeuMarmotteHunter {
         };
 
         //Fait répéter l'action par le timer
-        timer.scheduleAtFixedRate(actionARepetee, (long) timer.getDifficulteEmperique(), timer.getTemps());        
+        timer.scheduleAtFixedRate(actionARepetee, (long) timer.getDifficulteEmperique(), timer.getTemps());
     }
 
-        
-    private void ajouterEtDeplacerMarmotteAlea() {
-        Monde monde = timer.getMonde();      
-        Case caseAlea = monde.getCaseVideAliatoire();
+    public void ajouterEtDeplacerMarmotteAlea() {
+        Case caseAlea = timer.getMonde().getCaseVideAliatoire();
         if (caseAlea != null) {
-            timer.getMarmottes().add(new Marmotte(param.getPvMarmotte(), caseAlea));           
+            timer.getMarmottes().add(new Marmotte(param.getPvMarmotte(), caseAlea));
         } else {
-            param.setScore(perdUnPoint(param.getScore()));          
-        }        
+            param.setScore(perdUnPoint(param.getScore()));
+        }
         timer.deplacerMarmottes();
-        timer.afficherTemps();       
+        timer.afficherTemps();
     }
 
     public int perdUnPoint(int score) {
@@ -67,25 +67,25 @@ public class JeuMarmotteHunter {
         if (score > 0) {
             return (score - 1); //réduit le score de 1
         } //si le score est épuisé
-        else {          
+        else {
             timer.afficherTemps();
             timer.cancel();
-            if (timer == null)
-                System.out.println("ok");
             return score;
         }
     }
-    
+
     //à utiliser seulement pour les Test
-    public Parametres getParametres(){
+    public Parametres getParametres() {
         return param;
     }
+
     //à utiliser seulement pour les Test
-    public TimerPerso getTimer(){
+    public TimerPerso getTimer() {
         return timer;
     }
-        //à utiliser seulement pour les Test
-    public Monde getMonde(){
+
+    //à utiliser seulement pour les Test
+    public Monde getMonde() {
         return monde;
     }
 

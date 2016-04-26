@@ -3,6 +3,7 @@ package ch.hesge.paris.marmotte;
 
 import ch.hesge.paris.marmotte.JeuMarmotteHunter;
 import ch.hesge.paris.marmotte.Monde;
+import java.util.ArrayList;
 import static org.testng.Assert.assertFalse;
 import org.testng.annotations.Test;
 import static org.testng.Assert.assertTrue;
@@ -62,5 +63,34 @@ return data;
         int scoreTest = jeu.perdUnPoint(score);
         if (scoreTest > 0)
             assertTrue(jeu.getTimer().isMarche());
-    }     
+    } 
+    
+    @Test
+    public void ajouterEtDeplacerMarmotteAlea_ajoute_une_marmotte_si_place(){
+        int nbMarmottesAvant = jeu.getTimer().getMarmottes().size();
+        int nbMarmottesMax = jeu.getMonde().getTailleX() * jeu.getMonde().getTailleY();
+        jeu.ajouterEtDeplacerMarmotteAlea();
+        int nbMarmottesApres = jeu.getTimer().getMarmottes().size();
+        assertTrue(nbMarmottesAvant < nbMarmottesApres || nbMarmottesAvant == nbMarmottesMax);
+    }
+    
+    @Test
+    public void ajouterEtDeplacerMarmotteAlea_deplace_une_marmotte_si_place(){
+        int nbMarmottesAvant = jeu.getTimer().getMarmottes().size();
+        int nbMarmottesMax = jeu.getMonde().getTailleX() * jeu.getMonde().getTailleY();
+        
+        ArrayList<String> alPositionsAvant = new ArrayList<String>();
+        for(Marmotte m : jeu.getTimer().getMarmottes()){
+            alPositionsAvant.add(m.getMaCase().getPositionX() + "" + m.getMaCase().getPositionY());
+        }
+
+        jeu.ajouterEtDeplacerMarmotteAlea();
+        
+        ArrayList<String> alPositionsApres = new ArrayList<String>();
+        for(Marmotte m : jeu.getTimer().getMarmottes()){
+            alPositionsApres.add(m.getMaCase().getPositionX() + "" + m.getMaCase().getPositionY());
+        }        
+        
+        assertTrue(!alPositionsAvant.equals(alPositionsApres) || nbMarmottesAvant == nbMarmottesMax);
+    }    
 }    

@@ -48,8 +48,8 @@ public class Parametres {
  
  
     public void charger(){
-        setMondeTailleX(3);
-        setMondeTailleY(3);
+        setMondeTailleX(4);
+        setMondeTailleY(4);
         setPvMarmotte(1);
         setVitesseDifficulte(1000);
         setVitesseDifficulteEmperique(0);

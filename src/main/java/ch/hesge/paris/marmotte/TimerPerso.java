@@ -130,7 +130,7 @@ public class TimerPerso extends Timer {
         Date dateActuelle = new Date();
 
         long difference = (dateActuelle.getTime() - dateDebut.getTime()) / (1000);
-        System.out.println("Le jeu fonctionne depuis: " + difference + " sec");
+        monde.setLblTemps(difference + " secondes");
     }
 
     public void deplacerMarmottes() {

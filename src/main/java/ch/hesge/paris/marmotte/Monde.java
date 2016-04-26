@@ -1,6 +1,8 @@
 package ch.hesge.paris.marmotte;
 
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -17,7 +19,7 @@ import javax.swing.JPanel;
  *
  * @author PARIS_JIMMY-ESIG
  */
-public class Monde extends JFrame implements ActionListener {
+public class Monde extends JFrame implements ActionListener{
 
 //Déclaration des attributs
     //Tableau de cases
@@ -25,33 +27,28 @@ public class Monde extends JFrame implements ActionListener {
 
     private int tailleX;
     private int tailleY;
+    private JPanel zoneAffichage = new JPanel();;
+    private JPanel zoneJeu = new JPanel();;
+    private Label lblTemps = new Label("Temps : 0 seconde");
 
     //Constructeur
     public Monde(int tailleX, int tailleY) {
-        super("Titre");  //met le titre de la fenêtre
-
+        super("Marmotte Hunter");  //met le titre de la fenêtre
         this.tailleX = tailleX;
-        this.tailleY = tailleY;
-
-		
-        //définit l'arrêt de l'application lors de la fermeture UI
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        
-        //Interdit de redimensionner le monde
-        setResizable(false);
-        
-        //Crée une zone d'affichage
-        JPanel zoneAffichage = new JPanel();
-
-        //Crée la zone pour le plateau de jeu
-        JPanel zoneJeu = new JPanel();
-
-        //Définit le Layout manager de la fenêtre en GridLayout de taille X,Y
-        setLayout(new GridLayout(tailleX, tailleY));
-        
+        this.tailleY = tailleY;	
+        initConfigForm();
+        zoneAffichage.setLayout(new GridLayout(1, 3));       
+        zoneAffichage.add(lblTemps);
+        add("North",zoneAffichage);
+        zoneJeu.setLayout(new GridLayout(tailleX, tailleY));
+        add("Center",zoneJeu);
         afficherCases();
         afficherForm();
-
+    }
+    public void initConfigForm(){
+                setDefaultCloseOperation(EXIT_ON_CLOSE);      
+        setResizable(false);  
+        setLayout(new BorderLayout ());
     }
 
     private void afficherCases(){
@@ -62,7 +59,7 @@ public class Monde extends JFrame implements ActionListener {
                 Case nouvelleCase = new Case(x, y);
                 cases.add(nouvelleCase); //ajoute la nouvelle case dans la liste de cases
                 nouvelleCase.addActionListener(this); //lie la gestion d'événement au monde
-                add(nouvelleCase); //ajoute la case au monde
+                zoneJeu.add(nouvelleCase); //ajoute la case au monde
             }
 
         }        
@@ -103,6 +100,10 @@ public class Monde extends JFrame implements ActionListener {
     public int getTailleY() {
         return this.tailleY;
     }
+    
+    public void setLblTemps(String temps){
+        lblTemps.setText("Temps : " + temps);
+    }
     /**
      *
      * @return
@@ -142,8 +143,7 @@ public class Monde extends JFrame implements ActionListener {
         return null;
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void actionPerformed(ActionEvent ae) {
+        System.out.println("gestion du click ... à développer");
     }
 }
