@@ -79,8 +79,8 @@ public class Case extends JButton{
     public void setVide(boolean vide){
         if (vide)
         {
-            this.setIcon(new ImageIcon("img\\TextureHerbePetite.jpg"));
-        }
+            this.setIcon(new ImageIcon(Case.class.getClassLoader().getResource("TextureHerbePetite.jpg")));
+        } 
         this.vide = vide;
     }
 

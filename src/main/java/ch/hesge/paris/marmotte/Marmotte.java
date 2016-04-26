@@ -48,7 +48,10 @@ public class Marmotte
      * @param maCase
      */
     public void setMaCase(Case maCase) {
+        this.maCase.setVide(true);
         this.maCase = maCase;
+        maCase.setVide(false);
+        maCase.setIcon(new ImageIcon(Case.class.getClassLoader().getResource("ImageMarmotte1Point.png"))); //met une image de marmotte
     }
 
     /**

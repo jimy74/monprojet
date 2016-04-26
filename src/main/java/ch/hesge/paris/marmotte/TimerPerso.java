@@ -11,22 +11,23 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Timer;
+
 /**
  *
  * @author PARIS_JIMMY-ESIG
  */
 public class TimerPerso extends Timer {
-    
-    private double difficulteEmperique; //force de réduction du temps de rappel
+
+    private double difficulteEmperique; //force de r�duction du temps de rappel
     private int temps; //est le temps de rappel du timer
     private Monde monde;//monde principale, qui connait les cases
     private ArrayList<Marmotte> marmottes; //les marmottes, qui connaissent leurs cases
     private boolean marche = false;
-    
-    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss dd MM yyyy");	
+
+    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss dd MM yyyy");
     Calendar calendrierStart = new GregorianCalendar();
-    Date dateDebut = new Date( );
-    
+    Date dateDebut = new Date();
+
     /**
      *
      * @return
@@ -36,14 +37,13 @@ public class TimerPerso extends Timer {
     }
 
     /**
-     * 
+     *
      * @return
      */
     public ArrayList<Marmotte> getMarmottes() {
         return marmottes;
     }
-    
-    
+
     /**
      *
      * @param difficulteEmperique
@@ -53,6 +53,7 @@ public class TimerPerso extends Timer {
         this.difficulteEmperique = difficulteEmperique;
         this.temps = temps;
         marche = true;
+        marmottes = new ArrayList<Marmotte>();
     }
 
     /**
@@ -62,6 +63,7 @@ public class TimerPerso extends Timer {
     public int getTemps() {
         return temps;
     }
+
     /**
      *
      * @return
@@ -69,6 +71,7 @@ public class TimerPerso extends Timer {
     public void setMonde(Monde monde) {
         this.monde = monde;
     }
+
     /**
      *
      * @param temps
@@ -92,58 +95,68 @@ public class TimerPerso extends Timer {
     public void setDifficulteEmperique(double difficulteEmperique) {
         this.difficulteEmperique = difficulteEmperique;
     }
-    
+
     /**
      *
      */
-    public void printMonde(){
-        
+    public void printMonde() {
+
     }
-    
+
     @Override
-    public void cancel(){
+    public void cancel() {
         super.cancel();
         marche = false;
     }
-    
-    public Boolean isMarche(){
+
+    public Boolean isMarche() {
         return marche;
     }
-    /**
-     *
-     */
-    public void afficherScore(){
-        
-    }
-    /**
-     *
-     */
-    public void afficherTemps(){
-        /** Date du jour */
-        Date dateActuelle = new Date( );
 
-        long difference =  (dateActuelle.getTime()-dateDebut.getTime())/(1000);
+    /**
+     *
+     */
+    public void afficherScore() {
+
+    }
+
+    /**
+     *
+     */
+    public void afficherTemps() {
+        /**
+         * Date du jour
+         */
+        Date dateActuelle = new Date();
+
+        long difference = (dateActuelle.getTime() - dateDebut.getTime()) / (1000);
         System.out.println("Le jeu fonctionne depuis: " + difference + " sec");
     }
-    
-    public void deplacerMarmottes(){
-        //Pour toutes els marmottes
-        for (Marmotte marmotte : marmottes)
-        {
-            Case caseActuelle = marmotte.getMaCase(); //récupère la case actuelle de la marmotte
 
-            //si une marmotte peut se déplacer verticalement
+    public void deplacerMarmottes() {
+        //Pour toutes els marmottes
+        for (Marmotte marmotte : marmottes) {
+            Boolean marmotteDeplacee = false;
+            Case caseActuelle = marmotte.getMaCase();
+
             ArrayList<Case> cases = monde.getCases();
-            for (Case caseTest : cases)
-            {
-                if (caseTest.getPositionX() == caseActuelle.getPositionX() -1 ||
-                        caseTest.getPositionX() == caseActuelle.getPositionX() +1)
-                {
-                    if (caseTest.isVide()){
-                        marmotte.setMaCase(caseTest);
+            for (Case caseTest : cases) {
+                if (!marmotteDeplacee) {
+                    //si une marmotte peut se d�placer verticalement ou horizontalement
+                    if (caseTest.getPositionX() == caseActuelle.getPositionX() - 1
+                            || caseTest.getPositionX() == caseActuelle.getPositionX() + 1
+                            || caseTest.getPositionX() == caseActuelle.getPositionY() - 1
+                            || caseTest.getPositionX() == caseActuelle.getPositionY() + 1) {
+                        if (caseTest.isVide()) {
+                            marmotte.setMaCase(caseTest);
+                            marmotteDeplacee = true;
+
+                        }
                     }
                 }
+
             }
+
         }
     }
 }

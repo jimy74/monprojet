@@ -1,6 +1,4 @@
 package ch.hesge.paris.marmotte;
-
-
 import org.testng.annotations.Test;
 import static org.testng.Assert.assertNotNull;
 import org.testng.annotations.BeforeMethod;

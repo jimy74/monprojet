@@ -41,7 +41,7 @@ public class JeuMarmotteHunter {
         TimerTask actionARepetee = new TimerTask() {
             @Override
             public void run() {
-                ajouterOuDeplacerMarmotteAlea();
+                ajouterEtDeplacerMarmotteAlea();
             }
         };
 
@@ -50,16 +50,16 @@ public class JeuMarmotteHunter {
     }
 
         
-    private void ajouterOuDeplacerMarmotteAlea() {
-        Monde monde = timer.getMonde();
+    private void ajouterEtDeplacerMarmotteAlea() {
+        Monde monde = timer.getMonde();      
         Case caseAlea = monde.getCaseVideAliatoire();
         if (caseAlea != null) {
-            new Marmotte(param.getPvMarmotte(), caseAlea);
+            timer.getMarmottes().add(new Marmotte(param.getPvMarmotte(), caseAlea));           
         } else {
-            param.setScore(perdUnPoint(param.getScore()));
-            timer.deplacerMarmottes(); // A IMPLEMENTER
-        }
-        timer.afficherTemps();
+            param.setScore(perdUnPoint(param.getScore()));          
+        }        
+        timer.deplacerMarmottes();
+        timer.afficherTemps();       
     }
 
     public int perdUnPoint(int score) {
