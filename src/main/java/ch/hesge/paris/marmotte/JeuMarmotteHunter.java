@@ -5,13 +5,7 @@
  */
 package ch.hesge.paris.marmotte;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.TimerTask;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -19,28 +13,31 @@ import org.slf4j.LoggerFactory;
  */
 public class JeuMarmotteHunter {
 
-    private static Parametres param = new Parametres();
-    private static TimerPerso timer = null;
-    private static Monde monde = null;
+    private Parametres param = new Parametres();
+    private TimerPerso timer = null;
+    private Monde monde = null;
 
+    public JeuMarmotteHunter(){
+        param.charger();
+
+        monde = new Monde(param.getMondeTailleX(), param.getMondeTailleY());     
+        lancerTimer();        
+    }
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
-        param.charger();
-
-        monde = new Monde(param.getMondeTailleX(), param.getMondeTailleY());     
-        lancerTimer();
+        JeuMarmotteHunter jeu = new JeuMarmotteHunter();
     }
     
-    public static void lancerTimer(){
+
+    public void lancerTimer(){
         timer = new TimerPerso(param.getVitesseDifficulteEmperique(), param.getVitesseDifficulte());
 
         //Instancie le timer
         timer.setMonde(monde);
 
-        //DÃ©finit une action Ã  rÃ©pÃ©ter par le timer
+        //Définit une action Ã  répéter par le timer
         TimerTask actionARepetee = new TimerTask() {
             @Override
             public void run() {
@@ -48,39 +45,48 @@ public class JeuMarmotteHunter {
             }
         };
 
-        //Fait rÃ©pÃ©ter l'action par le timer
+        //Fait répéter l'action par le timer
         timer.scheduleAtFixedRate(actionARepetee, (long) timer.getDifficulteEmperique(), timer.getTemps());        
     }
 
         
-    private static void ajouterOuDeplacerMarmotteAlea() {
+    private void ajouterOuDeplacerMarmotteAlea() {
         Monde monde = timer.getMonde();
         Case caseAlea = monde.getCaseVideAliatoire();
         if (caseAlea != null) {
             new Marmotte(param.getPvMarmotte(), caseAlea);
         } else {
             param.setScore(perdUnPoint(param.getScore()));
-            timer.deplacerMarmottes();
+            timer.deplacerMarmottes(); // A IMPLEMENTER
         }
         timer.afficherTemps();
     }
 
-    public static int perdUnPoint(int score) {
-        //si le le score peut Ãªtre rÃ©duit
-        if (score - 1 > 0) {
-            return (score - 1); //rÃ©duit le score de 1
-        } //si le score est Ã©puisÃ©
+    public int perdUnPoint(int score) {
+        //si le le score peut être réduit
+        if (score > 0) {
+            return (score - 1); //réduit le score de 1
+        } //si le score est épuisé
         else {          
             timer.afficherTemps();
             timer.cancel();
+            if (timer == null)
+                System.out.println("ok");
             return score;
         }
     }
     
     //à utiliser seulement pour les Test
-    public static Parametres getParametres(){
+    public Parametres getParametres(){
         return param;
     }
-        
+    //à utiliser seulement pour les Test
+    public TimerPerso getTimer(){
+        return timer;
+    }
+        //à utiliser seulement pour les Test
+    public Monde getMonde(){
+        return monde;
+    }
 
 }

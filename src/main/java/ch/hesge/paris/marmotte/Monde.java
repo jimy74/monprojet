@@ -19,7 +19,7 @@ import javax.swing.JPanel;
  */
 public class Monde extends JFrame implements ActionListener {
 
-//DÃ©claration des attributs
+//Déclaration des attributs
     //Tableau de cases
     private ArrayList<Case> cases = new ArrayList<Case>(); //avec instanciation direct pour ne pas le faire avant utilisation
 
@@ -28,25 +28,25 @@ public class Monde extends JFrame implements ActionListener {
 
     //Constructeur
     public Monde(int tailleX, int tailleY) {
-        super("Titre");  //met le titre de la fenÃªtre
+        super("Titre");  //met le titre de la fenêtre
 
         this.tailleX = tailleX;
         this.tailleY = tailleY;
 
 		
-        //dÃ©finit l'arrÃªt de l'application lors de la fermeture UI
+        //définit l'arrêt de l'application lors de la fermeture UI
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
         //Interdit de redimensionner le monde
         setResizable(false);
         
-        //CrÃ©e une zone d'affichage
+        //Crée une zone d'affichage
         JPanel zoneAffichage = new JPanel();
 
-        //CrÃ©e la zone pour le plateau de jeu
+        //Crée la zone pour le plateau de jeu
         JPanel zoneJeu = new JPanel();
 
-        //DÃ©finit le Layout manager de la fenÃªtre en GridLayout de taille X,Y
+        //Définit le Layout manager de la fenêtre en GridLayout de taille X,Y
         setLayout(new GridLayout(tailleX, tailleY));
         
         afficherCases();
@@ -54,20 +54,20 @@ public class Monde extends JFrame implements ActionListener {
 
     }
 
-    public void afficherCases(){
+    private void afficherCases(){
         //pour toutes les colonnes
         for (int y = 1; y <= tailleY; y++) {
             //pour toutes les lignes 
             for (int x = 1; x <= tailleX; x++) {
                 Case nouvelleCase = new Case(x, y);
                 cases.add(nouvelleCase); //ajoute la nouvelle case dans la liste de cases
-                nouvelleCase.addActionListener(this); //lie la gestion d'Ã©vÃ©nement au monde
+                nouvelleCase.addActionListener(this); //lie la gestion d'événement au monde
                 add(nouvelleCase); //ajoute la case au monde
             }
 
         }        
     }
-    public void afficherForm(){
+    private void afficherForm(){
         pack();
         setLocationRelativeTo(null);
         setVisible(true);        
@@ -131,7 +131,7 @@ public class Monde extends JFrame implements ActionListener {
             {
                 if (uneCase.isVide())
                 {
-                    //Si la case est bien Ã  la position trouvÃ©e alÃ©atoirement
+                    //Si la case est bien Ã  la position trouvée aléatoirement
                     if (alea.nextInt(tailleX) + 1 == uneCase.getPositionX() && alea.nextInt(tailleY) + 1 == uneCase.getPositionY()) {
                         caseVideTrouve = true; 
                         return uneCase; //la case est retenue

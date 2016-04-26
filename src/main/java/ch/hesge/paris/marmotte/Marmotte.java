@@ -6,7 +6,6 @@
 package ch.hesge.paris.marmotte;
 
 import javax.swing.ImageIcon;
-import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 /**
  *

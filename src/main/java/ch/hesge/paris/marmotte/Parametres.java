@@ -38,13 +38,13 @@ class readIni {
  */
 public class Parametres {
     
- int vitesseDifficulte;
- int vitesseDifficulteEmperique;
- int pvMarmotte;
- int degat;
- int score;
- int mondeTailleX;
- int mondeTailleY;
+ private int vitesseDifficulte;
+ private int vitesseDifficulteEmperique;
+ private int pvMarmotte;
+ private int degat;
+ private int score;
+ private int mondeTailleX;
+ private int mondeTailleY;
  
  
     public void charger(){
@@ -54,6 +54,7 @@ public class Parametres {
         setVitesseDifficulte(1000);
         setVitesseDifficulteEmperique(0);
         setDegat(1);
+        setScore(1);
     }
     
  /**

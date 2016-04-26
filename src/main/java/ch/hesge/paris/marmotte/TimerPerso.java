@@ -21,6 +21,7 @@ public class TimerPerso extends Timer {
     private int temps; //est le temps de rappel du timer
     private Monde monde;//monde principale, qui connait les cases
     private ArrayList<Marmotte> marmottes; //les marmottes, qui connaissent leurs cases
+    private boolean marche = false;
     
     SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss dd MM yyyy");	
     Calendar calendrierStart = new GregorianCalendar();
@@ -51,6 +52,7 @@ public class TimerPerso extends Timer {
     public TimerPerso(double difficulteEmperique, int temps) {
         this.difficulteEmperique = difficulteEmperique;
         this.temps = temps;
+        marche = true;
     }
 
     /**
@@ -96,6 +98,16 @@ public class TimerPerso extends Timer {
      */
     public void printMonde(){
         
+    }
+    
+    @Override
+    public void cancel(){
+        super.cancel();
+        marche = false;
+    }
+    
+    public Boolean isMarche(){
+        return marche;
     }
     /**
      *
