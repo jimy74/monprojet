@@ -63,6 +63,7 @@ return data;
             assertTrue(jeu.getTimer().isMarche());
     } 
     
+    
     @Test
     public void ajouterEtDeplacerMarmotteAlea_ajoute_une_marmotte_si_place(){
         int nbMarmottesAvant = jeu.getTimer().getMarmottes().size();
@@ -71,6 +72,7 @@ return data;
         int nbMarmottesApres = jeu.getTimer().getMarmottes().size();
         assertTrue(nbMarmottesAvant < nbMarmottesApres || nbMarmottesAvant == nbMarmottesMax);
     }
+    
     
     @Test
     public void ajouterEtDeplacerMarmotteAlea_deplace_une_marmotte_si_place(){
