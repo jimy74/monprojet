@@ -5,8 +5,7 @@
  */
 package ch.hesge.paris.marmotte;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import java.util.TimerTask;
 
 /**
@@ -44,6 +43,7 @@ public class JeuMarmotteHunter {
             @Override
             public void run() {
                 ajouterEtDeplacerMarmotteAlea();
+                
             }
         };
 
@@ -63,15 +63,14 @@ public class JeuMarmotteHunter {
     }
 
     public int perdUnPoint(int score) {
+        score--;
         //si le le score peut être réduit
-        if (score > 0) {
-            return (score - 1); //réduit le score de 1
-        } //si le score est épuisé
-        else {
+        if (score < 1) {
             timer.afficherTemps();
-            timer.cancel();
-            return score;
+            timer.cancel(); 
+            return 0;
         }
+        return score;
     }
 
     //à utiliser seulement pour les Test

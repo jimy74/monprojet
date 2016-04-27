@@ -28,7 +28,7 @@ public class CaseTest {
     }
 
     @Test
-    public void une_case_est_par_defaut_vide() {
+    public void Case_est_par_defaut_vide() {
         assertTrue(c.isVide());
     }
 

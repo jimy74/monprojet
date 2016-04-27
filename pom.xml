@@ -151,7 +151,13 @@
             <artifactId>slf4j-simple</artifactId>
             <version>${slf4j.version}</version>
             <scope>runtime</scope>
-        </dependency>	
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies> 
 
     <!-- POUR BINTRAY (Déploiement de l'artefact)-->
