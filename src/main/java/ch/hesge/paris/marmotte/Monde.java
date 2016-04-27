@@ -52,6 +52,7 @@ public class Monde extends JFrame implements ActionListener{
     }
 
     private void afficherCases(){
+        
         //pour toutes les colonnes
         for (int y = 1; y <= tailleY; y++) {
             //pour toutes les lignes 
@@ -62,7 +63,7 @@ public class Monde extends JFrame implements ActionListener{
                 zoneJeu.add(nouvelleCase); //ajoute la case au monde
             }
 
-        }        
+        } 
     }
     private void afficherForm(){
         pack();

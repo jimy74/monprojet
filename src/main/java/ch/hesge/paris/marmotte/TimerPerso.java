@@ -134,7 +134,6 @@ public class TimerPerso extends Timer {
     }
 
     public void deplacerMarmottes() {
-        //Pour toutes els marmottes
         for (Marmotte marmotte : marmottes) {
             Boolean marmotteDeplacee = false;
             Case caseActuelle = marmotte.getMaCase();

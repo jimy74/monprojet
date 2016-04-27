@@ -11,22 +11,21 @@ import javax.swing.ImageIcon;
  *
  * @author DA_SAUDE_DAVID-ESIG
  */
-public class Marmotte 
-{
+public class Marmotte {
+
     private int pv;
     private Case maCase;
 
     /**
-     * 
+     *
      * @param pv
      */
-    public Marmotte(int pv,Case saCase) {
+    public Marmotte(int pv, Case saCase) {
         this.pv = pv;
         saCase.setVide(false);
         this.maCase = saCase;
-        putImgMarmotte();
     }
-    
+
     /**
      *
      * @param pv
@@ -43,18 +42,14 @@ public class Marmotte
         return pv;
     }
 
-    public void putImgMarmotte(){
-        maCase.setIcon(new ImageIcon(Case.class.getClassLoader().getResource("ImageMarmotte1Point.png"))); //met une image de marmotte
-    }
     /**
      *
      * @param maCase
      */
     public void setMaCase(Case maCase) {
         this.maCase.setVide(true);
-        this.maCase = maCase;
+        this.maCase = maCase;                
         maCase.setVide(false);
-        putImgMarmotte();
     }
 
     /**

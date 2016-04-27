@@ -13,7 +13,7 @@ public void setUp() {
 }
     @Test
     public void getCaseVideAliatoire_retourne_une_case_vraiment_vide() {
-        Monde monde = new Monde(jeu.getParametres().getMondeTailleX(),jeu.getParametres().getMondeTailleY());
+        Monde monde = jeu.getMonde();
         assertNotNull(monde.getCaseVideAliatoire());
     }
     
