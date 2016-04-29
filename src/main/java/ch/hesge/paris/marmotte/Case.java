@@ -23,7 +23,7 @@ public class Case extends JButton{
      * @param positionX
      * @param positionY
      */
-    public Case(int positionX, int positionY) {
+    public Case(int positionX,int positionY) {
         super(new ImageIcon(Case.class.getClassLoader().getResource("TextureHerbePetite.jpg")));
         this.positionX = positionX;
         this.positionY = positionY;
@@ -34,26 +34,10 @@ public class Case extends JButton{
 
     /**
      *
-     * @param positionY
-     */
-    public void setPositionY(int positionY) {
-        this.positionY = positionY;
-    }
-
-    /**
-     *
      * @return
      */
     public int getPositionY() {
         return positionY;
-    }
-    
-    /**
-     *
-     * @param positionX
-     */
-    public void setPositionX(int positionX){
-     this.positionX = positionX;   
     }
     
     /**

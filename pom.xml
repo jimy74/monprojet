@@ -134,11 +134,6 @@
             <artifactId>commons-lang</artifactId>
             <version>2.1</version>
         </dependency>	
-        <dependency>
-            <groupId>org.codehaus.plexus</groupId>
-            <artifactId>plexus-utils</artifactId>
-            <version>1.1</version>
-        </dependency>	
 	
         <!-- AUTRES DEPENDENCES DE TEST A AJOUTER : -->
         <dependency>
@@ -146,7 +141,6 @@
             <artifactId>testng</artifactId>
             <version>6.9.10</version>
             <scope>test</scope>
-            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
@@ -165,8 +159,6 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
-            <scope>compile</scope>
-            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
