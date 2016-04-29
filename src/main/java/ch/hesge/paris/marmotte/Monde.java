@@ -70,13 +70,6 @@ public class Monde extends JFrame implements ActionListener{
         setLocationRelativeTo(null);
         setVisible(true);        
     }
-    /**
-     *
-     * @param tailleX
-     */
-    public void setTailleX(int tailleX) {
-        this.tailleX = tailleX;
-    }
 
     /**
      * 
@@ -86,13 +79,6 @@ public class Monde extends JFrame implements ActionListener{
         return this.tailleX;
     }
 
-    /**
-     *
-     * @param tailleY
-     */
-    public void setTailleY(int tailleY) {
-        this.tailleY = tailleY;
-    }
 
     /**
      * 
@@ -112,13 +98,7 @@ public class Monde extends JFrame implements ActionListener{
     public ArrayList<Case> getCases() {
         return cases;
     }
-    /**
-     *
-     * @param cases
-     */
-    public void setCases(ArrayList<Case> cases) {
-        this.cases = cases;
-    }
+
     /**
      * Doit impérativement trouver une case aléatoirement
      * @return
