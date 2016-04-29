@@ -69,10 +69,4 @@ public class Case extends JButton{
         }
         this.vide = vide;
     }
-
-    @Override
-    public String toString()
-    {
-        return "positionX:" + positionX + " positionY: " + positionY + " vide:" + vide;
-    }
 }
