@@ -29,7 +29,7 @@ public class JeuMarmotteHunter {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        JeuMarmotteHunter jeu = new JeuMarmotteHunter();
+        new JeuMarmotteHunter();
     }
 
     public void lancerTimer() {
