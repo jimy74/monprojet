@@ -10,31 +10,7 @@ import java.io.*;
 /**
  *
  * @author ANFELONI-KYLE-ESIG
- */
-class readIni {
-  public static void main(String args[]) {
-    readIni ini = new readIni();
-    ini.doit();
-    }
-
-  public void doit() {
-    try{
-      Properties p = new Properties();
-      p.load(new FileInputStream("user.ini"));
-      System.out.println("user = " + p.getProperty("DBuser"));
-      System.out.println("password = " + p.getProperty("DBpassword"));
-      System.out.println("location = " + p.getProperty("DBlocation"));
-      p.list(System.out);
-      }
-    catch (Exception e) {
-      System.out.println(e);
-      }
-    }
-}
-
-/**
- *
- * @author jimmy
+ *  support by JIMMY PARIS
  */
 public class Parametres {
     
