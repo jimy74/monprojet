@@ -33,16 +33,17 @@ public class Monde extends FramePerso{
      */
     public Case getCaseVideAliatoire() {      
         boolean caseVideTrouve = false; 
-
-        while (!caseVideTrouve)
+        int nbEssaiDeplacer = 0;
+        while (!caseVideTrouve && nbEssaiDeplacer < 5000)
         {
+            nbEssaiDeplacer++;
             Random alea = new Random();
             for (Case uneCase : getCases())
             {
                 if (uneCase.isVide())
                 {
                     //Si la case est bien Ã  la position trouvée aléatoirement
-                    if (alea.nextInt(getTailleX()) + 1 == uneCase.getPositionX() && alea.nextInt(getTailleY()) + 1 == uneCase.getPositionY()) {
+                    if (alea.nextInt(getTailleX()) + 1 == uneCase.getPositionX() && (alea.nextInt(getTailleY()) + 1 == uneCase.getPositionY())) {
                         caseVideTrouve = true; 
                         return uneCase; //la case est retenue
                     }
