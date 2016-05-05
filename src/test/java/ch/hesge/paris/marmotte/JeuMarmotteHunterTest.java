@@ -96,4 +96,20 @@ public class JeuMarmotteHunterTest {
 
         assertTrue(!alPositionsAvant.equals(alPositionsApres) || nbMarmottesAvant == nbMarmottesMax);
     }
+    
+    @Test
+    public void ajouterEtDeplacerMarmotteAlea_reduit_score_si_plus_grand_que_0_et_monde_rempli() {
+        
+        int nbMarmottesAvant = jeu.getTimer().getMarmottes().size();
+        int nbMarmottesMax = jeu.getMonde().getTailleX() * jeu.getMonde().getTailleY();
+        
+        int ancienScore = jeu.getParametres().getScore();
+        
+        jeu.ajouterEtDeplacerMarmotteAlea();
+        if (ancienScore > 0 && nbMarmottesAvant == nbMarmottesMax)
+            assertTrue(ancienScore < jeu.getParametres().getScore());
+            
+
+        
+    }    
 }
