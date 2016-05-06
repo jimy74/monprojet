@@ -21,6 +21,10 @@ public class Parametres {
  private int score;
  private int mondeTailleX;
  private int mondeTailleY;
+
+    public Parametres() {
+        charger();
+    }
  
  
     public void charger(){
@@ -143,22 +147,6 @@ public class Parametres {
      */
     public int getMondeTailleY() {
         return mondeTailleY;
-    }
- 
-    /**
-     * 
-     * @return
-     */
-    public File getFichierIni(){
-        return null;
-    }
-    
-    /**
-     *
-     * @param ini
-     */
-    public void lireFichierIni(File ini){
-    
-    }         
+    }        
  
 }

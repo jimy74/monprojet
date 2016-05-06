@@ -30,7 +30,10 @@ public class TimerTest {
     
     @BeforeMethod
     public void setUp() {
-        jeu = new JeuMarmotteHunter();
+        Parametres p = new Parametres();
+        jeu = new JeuMarmotteHunter(p,
+                new Monde(p.getMondeTailleX(), p.getMondeTailleY()),
+                new TimerPerso(p.getVitesseDifficulteEmperique(), p.getVitesseDifficulte()));
     }
 
     @Test

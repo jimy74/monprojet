@@ -11,6 +11,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Timer;
+import java.util.TimerTask;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -55,7 +57,7 @@ public class TimerPerso extends Timer {
         marche = true;
         marmottes = new ArrayList<Marmotte>();
     }
-
+    
     /**
      *
      * @return

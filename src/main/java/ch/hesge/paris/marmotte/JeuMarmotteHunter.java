@@ -14,14 +14,14 @@ import javax.swing.SwingUtilities;
  */
 public class JeuMarmotteHunter {
 
-    private Parametres param = new Parametres();
-    private TimerPerso timer = null;
+    private Parametres param;
+    private TimerPerso timer;
     private Monde monde = null;
 
-    public JeuMarmotteHunter() {
-        param.charger();
-
-        monde = new Monde(param.getMondeTailleX(), param.getMondeTailleY());
+    public JeuMarmotteHunter(Parametres param, Monde monde, TimerPerso timer) {
+        this.param = param;
+        this.monde = monde;
+        this.timer = timer; 
         lancerTimer();
     }
 
@@ -29,11 +29,14 @@ public class JeuMarmotteHunter {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        new JeuMarmotteHunter();
+        Parametres p = new Parametres();
+        new JeuMarmotteHunter(p,
+                new Monde(p.getMondeTailleX(), p.getMondeTailleY()),
+                new TimerPerso(p.getVitesseDifficulteEmperique(), p.getVitesseDifficulte()));
     }
 
     public void lancerTimer() {
-        timer = new TimerPerso(param.getVitesseDifficulteEmperique(), param.getVitesseDifficulte());
+        
 
         //Instancie le timer
         timer.setMonde(monde);
