@@ -20,9 +20,12 @@ public class JeuMarmotteHunterTest {
     @BeforeMethod
     public void setUp() {
         Parametres p = new Parametres();
-        jeu = new JeuMarmotteHunter(p,
-                new Monde(p.getMondeTailleX(), p.getMondeTailleY()),
-                new TimerPerso(p.getVitesseDifficulteEmperique(), p.getVitesseDifficulte()));
+        jeu = new JeuMarmotteHunter(p,               
+                new TimerPerso(new Monde(p.getMondeTailleX(), p.getMondeTailleY()),
+                        p.getVitesseDifficulteEmperique(),
+                        p.getVitesseDifficulte()
+                )
+        );
     }
 
     @DataProvider(name = "data")

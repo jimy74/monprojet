@@ -24,7 +24,6 @@ public class MarmotteTest {
     @BeforeMethod
     public void setUp() {
         param = new Parametres();
-        param.charger();
         caseDepart = new Case(1, 1);
         marmotte = new Marmotte(param.getPvMarmotte(), caseDepart);
         caseChangee = new Case(1, 2);

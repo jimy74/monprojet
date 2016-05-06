@@ -10,9 +10,12 @@ private JeuMarmotteHunter jeu;
 @BeforeMethod
 public void setUp() {
         Parametres p = new Parametres();
-        jeu = new JeuMarmotteHunter(p,
-                new Monde(p.getMondeTailleX(), p.getMondeTailleY()),
-                new TimerPerso(p.getVitesseDifficulteEmperique(), p.getVitesseDifficulte()));
+        jeu = new JeuMarmotteHunter(p,               
+                new TimerPerso(new Monde(p.getMondeTailleX(), p.getMondeTailleY()),
+                        p.getVitesseDifficulteEmperique(),
+                        p.getVitesseDifficulte()
+                )
+        );
 }
     @Test
     public void getCaseVideAliatoire_retourne_une_case_vraiment_vide() {
