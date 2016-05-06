@@ -30,16 +30,15 @@ public class TimerTest {
     
     @BeforeMethod
     public void setUp() {
-        param = new Parametres();
-        param.charger();
         jeu = new JeuMarmotteHunter();
-        timer = jeu.getTimer();
-        nbMarmottesAvant = jeu.getTimer().getMarmottes().size();
-        nbMarmottesMax = jeu.getMonde().getTailleX() * jeu.getMonde().getTailleY();
     }
 
     @Test
-    public void depalcerMarmottes_deplace_une_marmotte_si_place() {
+    public void depalcerMarmottes_deplace_une_marmotte_si_place_et_si_marmotte() {
+        timer = jeu.getTimer();
+        nbMarmottesAvant = jeu.getTimer().getMarmottes().size();
+        nbMarmottesMax = jeu.getMonde().getTailleX() * jeu.getMonde().getTailleY();
+        
         ArrayList<String> alPositionsAvant = new ArrayList<String>();
         for (Marmotte m : timer.getMarmottes()) {
             alPositionsAvant.add(m.getMaCase().getPositionX() + "" + m.getMaCase().getPositionY());
@@ -49,7 +48,7 @@ public class TimerTest {
         for (Marmotte m : timer.getMarmottes()) {
             alPositionsApres.add(m.getMaCase().getPositionX() + "" + m.getMaCase().getPositionY());
         }
-        assertTrue(!alPositionsAvant.equals(alPositionsApres) || nbMarmottesAvant == nbMarmottesMax);
+        assertTrue(!alPositionsAvant.equals(alPositionsApres) || nbMarmottesAvant == nbMarmottesMax || nbMarmottesAvant <= 0);
     }
 
 }
