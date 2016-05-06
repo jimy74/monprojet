@@ -5,8 +5,8 @@
  */
 package ch.hesge.paris.marmotte;
 
-
 import java.util.TimerTask;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -42,8 +42,12 @@ public class JeuMarmotteHunter {
         TimerTask actionARepetee = new TimerTask() {
             @Override
             public void run() {
-                ajouterEtDeplacerMarmotteAlea();
-                
+                SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
+                        ajouterEtDeplacerMarmotteAlea();
+                    }
+                });
+
             }
         };
 
@@ -67,7 +71,7 @@ public class JeuMarmotteHunter {
         //si le le score peut être réduit
         if (score < 1) {
             timer.afficherTemps();
-            timer.cancel(); 
+            timer.cancel();
             return 0;
         }
         return score;
