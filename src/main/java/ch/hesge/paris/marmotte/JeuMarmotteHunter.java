@@ -16,13 +16,11 @@ public class JeuMarmotteHunter {
 
     private Parametres param;
     private TimerPerso timer;
-    private Monde monde = null;
 
-    public JeuMarmotteHunter(Parametres param, Monde monde, TimerPerso timer) {
+    public JeuMarmotteHunter(Parametres param, TimerPerso timer) {
         this.param = param;
-        this.monde = monde;
         this.timer = timer; 
-        lancerTimer();
+        lancerTimer(timer);
     }
 
     /**
@@ -31,16 +29,10 @@ public class JeuMarmotteHunter {
     public static void main(String[] args) {
         Parametres p = new Parametres();
         new JeuMarmotteHunter(p,
-                new Monde(p.getMondeTailleX(), p.getMondeTailleY()),
-                new TimerPerso(p.getVitesseDifficulteEmperique(), p.getVitesseDifficulte()));
+                new TimerPerso(new Monde(p.getMondeTailleX(), p.getMondeTailleY()), p.getVitesseDifficulteEmperique(), p.getVitesseDifficulte()));
     }
 
-    public void lancerTimer() {
-        
-
-        //Instancie le timer
-        timer.setMonde(monde);
-
+    public void lancerTimer(TimerPerso p_timer) {       
         //Définit une action Ã  répéter par le timer
         TimerTask actionARepetee = new TimerTask() {
             @Override
@@ -92,7 +84,7 @@ public class JeuMarmotteHunter {
 
     //à utiliser seulement pour les Test
     public Monde getMonde() {
-        return monde;
+        return timer.getMonde();
     }
 
 }

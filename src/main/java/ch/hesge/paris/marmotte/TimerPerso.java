@@ -48,10 +48,12 @@ public class TimerPerso extends Timer {
 
     /**
      *
+     * @param monde
      * @param difficulteEmperique
      * @param temps
      */
-    public TimerPerso(double difficulteEmperique, int temps) {
+    public TimerPerso(Monde monde, double difficulteEmperique, int temps) {
+        this.monde = monde;
         this.difficulteEmperique = difficulteEmperique;
         this.temps = temps;
         marche = true;
@@ -64,14 +66,6 @@ public class TimerPerso extends Timer {
      */
     public int getTemps() {
         return temps;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public void setMonde(Monde monde) {
-        this.monde = monde;
     }
 
     /**
