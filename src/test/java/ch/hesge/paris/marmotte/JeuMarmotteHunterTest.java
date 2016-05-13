@@ -2,6 +2,7 @@ package ch.hesge.paris.marmotte;
 
 import java.util.ArrayList;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.mockito.Mockito;
 import static org.testng.Assert.assertFalse;
 import org.testng.annotations.Test;
@@ -10,6 +11,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
 import static org.mockito.Mockito.*;
+import static org.testng.Assert.assertNotNull;
 
 public class JeuMarmotteHunterTest {
 
@@ -32,10 +34,14 @@ public class JeuMarmotteHunterTest {
         );
     }
 
-
+/* ****************************************************************************************************
+    Test de ajouterEtDeplacerMarmotteAlea() 
+**************************************************************************************************** */
+    
+    // /!\ tests d'intégrations MAL ECRIT , Voir prochain cours
+    @Ignore
     @Test
     public void ajouterEtDeplacerMarmotteAlea_deplace_une_marmotte_si_place() {
-        /* est un test d'intégration (voir prochain cours)
         
         int nbMarmottesAvant = jeu.getTimer().getMarmottes().size();
         int nbMarmottesMax = jeu.getMonde().getTailleX() * jeu.getMonde().getTailleY();
@@ -51,9 +57,12 @@ public class JeuMarmotteHunterTest {
         }
 
         assertTrue(!alPositionsAvant.equals(alPositionsApres) || nbMarmottesAvant == nbMarmottesMax || nbMarmottesAvant <= 0);
-        */
+                      
+
     }
 
+    // /!\ tests d'intégrations MAL ECRIT , Voir prochain cours
+    @Ignore
     @Test
     public void ajouterEtDeplacerMarmotteAlea_reduit_score_si_plus_grand_que_0_et_monde_rempli() {
 
@@ -66,11 +75,11 @@ public class JeuMarmotteHunterTest {
         if (ancienScore > 0 && nbMarmottesAvant == nbMarmottesMax) {
             assertTrue(ancienScore < jeu.getParametres().getScore());
         }
-    }
+    }     
     
-    //Test de AjouterEtDeplacerMarmotteAlea()
+    // Exemple fait avec Nicolas Frankel lors du cours
     @Test
-    public void doit_modifier_score_si_caseAlea_null() {
+    public void ajouterEtDeplacerMarmotteAlea_doit_modifier_score_si_caseAlea_null() {
         
         TimerPerso timer = mock(TimerPerso.class);
         Monde monde = mock(Monde.class);
@@ -84,8 +93,9 @@ public class JeuMarmotteHunterTest {
         
         Assert.assertTrue(ancienScore > nouveauScore);
     }
+    
     @Test
-    public void ne_doit_pas_modifier_score_si_caseAlea_null() {
+    public void ajouterEtDeplacerMarmotteAlea_ne_doit_pas_modifier_score_si_caseAlea_null() {
         
         TimerPerso timer = mock(TimerPerso.class);
         Monde monde = mock(Monde.class);
@@ -101,7 +111,7 @@ public class JeuMarmotteHunterTest {
     }
     
     @Test
-     public void ajoute_une_marmotte_si_caseAlea_trouve() {
+     public void ajouterEtDeplacerMarmotteAlea_ajoute_une_marmotte_si_caseAlea_trouve() {
         
         TimerPerso timer = mock(TimerPerso.class);
         Monde monde = mock(Monde.class);
@@ -117,7 +127,7 @@ public class JeuMarmotteHunterTest {
     } 
 
      @Test
-     public void ajoute_Pas_de_marmotte_si_caseAlea_null() {
+     public void ajouterEtDeplacerMarmotteAlea_ajoute_Pas_de_marmotte_si_caseAlea_null() {
         
         TimerPerso timer = mock(TimerPerso.class);
         Monde monde = mock(Monde.class);
@@ -132,7 +142,9 @@ public class JeuMarmotteHunterTest {
         Assert.assertTrue(ancienNbMarmottes == nouveauNbMarmottes);
     }  
      
-     //test de testFin()
+/* ****************************************************************************************************
+    Test de testFin() 
+**************************************************************************************************** */
     
      @Test
       public void testFin_arrete_le_jeu__si_score_plus_petit_que_0() {
