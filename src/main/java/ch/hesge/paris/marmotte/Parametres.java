@@ -148,5 +148,9 @@ public class Parametres {
     public int getMondeTailleY() {
         return mondeTailleY;
     }        
+
+    void reduirePoint(int scoreEnMoins) {
+            score -= scoreEnMoins;
+    }
  
 }
