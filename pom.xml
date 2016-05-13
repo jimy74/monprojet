@@ -29,25 +29,7 @@
 
   
         <plugins>
-<!--
-            <plugin>
-                <groupId>pl.project13.maven</groupId>
-                <artifactId>git-commit-id-plugin</artifactId>
-                <version>2.2.0</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>revision</goal>
-                        </goals>
-                    </execution>
-                </executions>
-
-                <configuration>
-                    <generateGitPropertiesFile>true</generateGitPropertiesFile>			
-                </configuration>
-
-                        </plugin>
-            -->		
+	
             <!-- DEFINIR LA CLASSE qui contient le MAIN -->
             <plugin>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -116,10 +98,12 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>          
+            </plugin> 
+          
+                                 
         </plugins>
 
-   
+  
     </build>
   
     <properties>
@@ -127,7 +111,11 @@
     </properties>
 
     <dependencies>
-           
+        <dependency>
+            <groupId>org.pitest</groupId>
+            <artifactId>pitest-maven</artifactId>
+            <version>1.1.9</version>
+        </dependency>                
         <!-- LIE A LA DEFINITION DU MAIN -->
         <dependency>
             <groupId>commons-lang</groupId>
