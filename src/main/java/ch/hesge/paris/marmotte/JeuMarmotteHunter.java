@@ -56,19 +56,21 @@ public class JeuMarmotteHunter {
         if (caseAlea != null) {
             p_timer.getMarmottes().add(new Marmotte(param.getPvMarmotte(), caseAlea));
         } else {
-            param.reduirePoint(1); 
-            testFin(param.getScore());
+            param.setScore(perdUnPoint(param.getScore()));
         }
         p_timer.deplacerMarmottes();
         p_timer.afficherTemps();
     }
 
-    public void testFin(int score) {
+    public int perdUnPoint(int score) {
+        score--;
         //si le le score peut être réduit
         if (score < 1) {
             timer.afficherTemps();
             timer.cancel();
+            return 0;
         }
+        return score;
     }
 
     //à utiliser seulement pour les Test
