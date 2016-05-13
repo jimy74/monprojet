@@ -32,33 +32,34 @@ public class JeuMarmotteHunter {
                 new TimerPerso(new Monde(p.getMondeTailleX(), p.getMondeTailleY()), p.getVitesseDifficulteEmperique(), p.getVitesseDifficulte()));
     }
 
-    public void lancerTimer(TimerPerso p_timer) {       
+    public void lancerTimer(TimerPerso p_timer) {   
+        final TimerPerso f_timer = p_timer;
         //Définit une action Ã  répéter par le timer
         TimerTask actionARepetee = new TimerTask() {
             @Override
             public void run() {
                 SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
-                        ajouterEtDeplacerMarmotteAlea();
+                        ajouterEtDeplacerMarmotteAlea(f_timer);
                     }
                 });
 
             }
         };
-
+        
         //Fait répéter l'action par le timer
-        timer.scheduleAtFixedRate(actionARepetee, (long) timer.getDifficulteEmperique(), timer.getTemps());
+        p_timer.scheduleAtFixedRate(actionARepetee, (long) p_timer.getDifficulteEmperique(), p_timer.getTemps());
     }
 
-    public void ajouterEtDeplacerMarmotteAlea() {
-        Case caseAlea = timer.getMonde().getCaseVideAliatoire();
+    public void ajouterEtDeplacerMarmotteAlea(TimerPerso p_timer) {
+        Case caseAlea = p_timer.getMonde().getCaseVideAliatoire();
         if (caseAlea != null) {
-            timer.getMarmottes().add(new Marmotte(param.getPvMarmotte(), caseAlea));
+            p_timer.getMarmottes().add(new Marmotte(param.getPvMarmotte(), caseAlea));
         } else {
             param.setScore(perdUnPoint(param.getScore()));
         }
-        timer.deplacerMarmottes();
-        timer.afficherTemps();
+        p_timer.deplacerMarmottes();
+        p_timer.afficherTemps();
     }
 
     public int perdUnPoint(int score) {
@@ -82,7 +83,7 @@ public class JeuMarmotteHunter {
         return timer;
     }
 
-    //à utiliser seulement pour les Test
+    //astuce pour aller plus vite, à utiliser seulement pour les Test
     public Monde getMonde() {
         return timer.getMonde();
     }
