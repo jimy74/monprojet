@@ -54,4 +54,12 @@ public class MarmotteTest {
         marmotte.setMaCase(null);
 
     }
+    
+     @Test
+    public void setPv_1_donc_getPv_1() {
+        int pv = 1;
+        marmotte.setPv(pv);
+        assertTrue(marmotte.getPv() == pv);
+
+    }   
 }

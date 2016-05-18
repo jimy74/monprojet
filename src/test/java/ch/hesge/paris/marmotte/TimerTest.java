@@ -60,7 +60,7 @@ public class TimerTest {
         }
         assertTrue(!alPositionsAvant.equals(alPositionsApres) || nbMarmottesAvant == nbMarmottesMax || nbMarmottesAvant <= 0);
     }
-
+    
     /*
      @Test
      public void depalcerMarmottes_deplace_si_une_seule_marmotte() {

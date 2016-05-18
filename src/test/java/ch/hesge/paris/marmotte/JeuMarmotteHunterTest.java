@@ -33,7 +33,7 @@ public class JeuMarmotteHunterTest {
                 )
         );
     }
-
+    
 /* ****************************************************************************************************
     Test de ajouterEtDeplacerMarmotteAlea() 
 **************************************************************************************************** */
@@ -164,5 +164,5 @@ public class JeuMarmotteHunterTest {
         
         jeu.testFin(1);      
         Assert.assertTrue(jeu.getTimer().isMarche());
-    }       
+    }  
 }
