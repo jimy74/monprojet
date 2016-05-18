@@ -131,12 +131,10 @@ public class TimerPerso extends Timer {
 
     public void deplacerMarmottes() {
         for (Marmotte marmotte : marmottes) {
-            Boolean marmotteDeplacee = false;
             Case caseActuelle = marmotte.getMaCase();
 
             ArrayList<Case> cases = monde.getCases();
             for (Case caseTest : cases) {
-                if (!marmotteDeplacee) {
                     //si une marmotte peut se déplacer verticalement ou horizontalement
                     if (caseTest.getPositionX() == caseActuelle.getPositionX() - 1
                             || caseTest.getPositionX() == caseActuelle.getPositionX() + 1
@@ -144,11 +142,9 @@ public class TimerPerso extends Timer {
                             || caseTest.getPositionX() == caseActuelle.getPositionY() + 1) {
                         if (caseTest.isVide()) {
                             marmotte.setMaCase(caseTest);
-                            marmotteDeplacee = true;
 
                         }
                     }
-                }
 
             }
 
