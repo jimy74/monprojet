@@ -78,6 +78,9 @@ public class FramePerso extends JFrame implements ActionListener{
     public void setLblTemps(String temps){
         lblTemps.setText("Temps : " + temps);
     }
+     public String getLblTemps(){
+        return lblTemps.getText();
+    }   
     /**
      *
      * @return
