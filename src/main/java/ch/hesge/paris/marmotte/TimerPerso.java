@@ -125,7 +125,7 @@ public class TimerPerso extends Timer {
          */
         Date dateActuelle = new Date();
 
-        long difference = (dateActuelle.getTime() - dateDebut.getTime()) / (1000);
+        long difference = (dateActuelle.getTime() - dateDebut.getTime()) / (temps);
         monde.setLblTemps(difference + " secondes");
     }
 
@@ -133,12 +133,12 @@ public class TimerPerso extends Timer {
         for (Marmotte marmotte : marmottes) {
             Case maCase = marmotte.getMaCase();
             ArrayList<Case> cases = monde.getCases();
-            for (Case uneCase : cases) {                     
+            for (Case uneCase : cases) {
                 //si marmotte à une case vide directement à proximité
-                if (uneCase.isVide() && Math.abs(uneCase.getPositionX()-maCase.getPositionX())==1 && Math.abs(uneCase.getPositionY()-maCase.getPositionY())==1) {                   
-                        marmotte.setMaCase(uneCase);
-                    }
+                if (uneCase.isVide() && Math.abs(uneCase.getPositionX() - maCase.getPositionX()) == 1 && Math.abs(uneCase.getPositionY() - maCase.getPositionY()) == 1) {
+                    marmotte.setMaCase(uneCase);
                 }
             }
         }
     }
+}
