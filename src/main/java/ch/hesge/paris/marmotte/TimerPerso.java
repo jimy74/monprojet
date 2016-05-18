@@ -59,7 +59,7 @@ public class TimerPerso extends Timer {
         marche = true;
         marmottes = new ArrayList<Marmotte>();
     }
-    
+
     /**
      *
      * @return
@@ -131,23 +131,14 @@ public class TimerPerso extends Timer {
 
     public void deplacerMarmottes() {
         for (Marmotte marmotte : marmottes) {
-            Case caseActuelle = marmotte.getMaCase();
-
+            Case maCase = marmotte.getMaCase();
             ArrayList<Case> cases = monde.getCases();
-            for (Case caseTest : cases) {
-                    //si une marmotte peut se déplacer verticalement ou horizontalement
-                    if (caseTest.getPositionX() == caseActuelle.getPositionX() - 1
-                            || caseTest.getPositionX() == caseActuelle.getPositionX() + 1
-                            || caseTest.getPositionX() == caseActuelle.getPositionY() - 1
-                            || caseTest.getPositionX() == caseActuelle.getPositionY() + 1) {
-                        if (caseTest.isVide()) {
-                            marmotte.setMaCase(caseTest);
-
-                        }
+            for (Case uneCase : cases) {                     
+                //si marmotte à une case vide directement à proximité
+                if (uneCase.isVide() && Math.abs(uneCase.getPositionX()-maCase.getPositionX())==1 && Math.abs(uneCase.getPositionY()-maCase.getPositionY())==1) {                   
+                        marmotte.setMaCase(uneCase);
                     }
-
+                }
             }
-
         }
     }
-}
