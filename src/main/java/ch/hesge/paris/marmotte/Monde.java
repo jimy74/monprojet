@@ -33,10 +33,8 @@ public class Monde extends FramePerso{
      */
     public Case getCaseVideAliatoire() {      
         boolean caseVideTrouve = false; 
-        int nbEssaiDeplacer = 0;
-        while (!caseVideTrouve && nbEssaiDeplacer < 5000)
+        while (!caseVideTrouve)
         {
-            nbEssaiDeplacer++;
             Random alea = new Random();
             for (Case uneCase : getCases())
             {
