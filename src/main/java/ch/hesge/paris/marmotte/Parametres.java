@@ -7,49 +7,36 @@ package ch.hesge.paris.marmotte;
 
 import java.util.*;
 import java.io.*;
+
 /**
  *
- * @author ANFELONI-KYLE-ESIG
- *  support by JIMMY PARIS
+ * @author ANFELONI-KYLE-ESIG support by JIMMY PARIS
  */
 public class Parametres {
-    
- private int vitesseDifficulte;
- private int vitesseDifficulteEmperique;
- private int pvMarmotte;
- private int degat;
- private int score;
- private int mondeTailleX;
- private int mondeTailleY;
+
+    private int vitesseDifficulte = 1000;
+    private int vitesseDifficulteEmperique = 0;
+    private int pvMarmotte = 1;
+    private int degat = 1;
+    private int score;
+    private int mondeTailleX = 4;
+    private int mondeTailleY = 4;
 
     public Parametres() {
-        charger();
     }
- 
- 
-    public void charger(){
-        setMondeTailleX(4);
-        setMondeTailleY(4);
-        setPvMarmotte(1);
-        setVitesseDifficulte(1000);
-        setVitesseDifficulteEmperique(0);
-        setDegat(1);
-        setScore(1);
-    }
-    
- /**
-  *
-  * @param vitesseDifficulte
-  */
- public void setVitesseDifficulte(int vitesseDifficulte) {
+    /**
+     *
+     * @param vitesseDifficulte
+     */
+    public void setVitesseDifficulte(int vitesseDifficulte) {
         this.vitesseDifficulte = vitesseDifficulte;
     }
 
- /**
-  *
-  * @param vitesseDifficulteEmperique
-  */
- public void setVitesseDifficulteEmperique(int vitesseDifficulteEmperique) {
+    /**
+     *
+     * @param vitesseDifficulteEmperique
+     */
+    public void setVitesseDifficulteEmperique(int vitesseDifficulteEmperique) {
         this.vitesseDifficulteEmperique = vitesseDifficulteEmperique;
     }
 
@@ -147,10 +134,10 @@ public class Parametres {
      */
     public int getMondeTailleY() {
         return mondeTailleY;
-    }        
+    }
 
     void reduirePoint(int scoreEnMoins) {
-            score -= scoreEnMoins;
+        score -= scoreEnMoins;
     }
- 
+
 }
