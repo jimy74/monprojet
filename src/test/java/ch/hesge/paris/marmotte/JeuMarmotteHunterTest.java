@@ -1,6 +1,7 @@
 package ch.hesge.paris.marmotte;
 
 import java.util.ArrayList;
+import java.util.Random;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.mockito.Mockito;
@@ -79,13 +80,13 @@ public class JeuMarmotteHunterTest {
     
     // Exemple fait avec Nicolas Frankel lors du cours
     @Test
-    public void ajouterEtDeplacerMarmotteAlea_doit_modifier_score_si_caseAlea_null() {
+    public void ajouterEtDeplacerMarmotteAlea_reduit_le_score_si_caseAlea_null() {
         
         TimerPerso timer = mock(TimerPerso.class);
         Monde monde = mock(Monde.class);
         
         when(timer.getMonde()).thenReturn(monde);
-        when(monde.getCaseVideAliatoire()).thenReturn(null);      
+        when(monde.getCaseVideAliatoire(new Random())).thenReturn(null);      
         
         int ancienScore = p.getScore();
         jeu.ajouterEtDeplacerMarmotteAlea(timer); 
@@ -95,19 +96,19 @@ public class JeuMarmotteHunterTest {
     }
     
     @Test
-    public void ajouterEtDeplacerMarmotteAlea_ne_doit_pas_modifier_score_si_caseAlea_null() {
+    public void ajouterEtDeplacerMarmotteAlea_ne_change_pas_le_score_si_caseAlea_trouvee() {
         
         TimerPerso timer = mock(TimerPerso.class);
         Monde monde = mock(Monde.class);
         
         when(timer.getMonde()).thenReturn(monde);
-        when(monde.getCaseVideAliatoire()).thenReturn(new Case(1,1));      
-        
+        when(monde.getCaseVideAliatoire(any(Random.class))).thenReturn(new Case(1,1));      
+       
         int ancienScore = p.getScore();
-        jeu.ajouterEtDeplacerMarmotteAlea(timer); 
+        jeu.ajouterEtDeplacerMarmotteAlea(timer);       
         int nouveauScore = p.getScore();
-        
-        Assert.assertTrue(ancienScore == nouveauScore);
+       
+        Assert.assertEquals(ancienScore,nouveauScore);
     }
     
     @Test
@@ -117,7 +118,7 @@ public class JeuMarmotteHunterTest {
         Monde monde = mock(Monde.class);
         
         when(timer.getMonde()).thenReturn(monde);
-        when(monde.getCaseVideAliatoire()).thenReturn(new Case(1, 1));      
+        when(monde.getCaseVideAliatoire(any(Random.class))).thenReturn(new Case(1, 1));      
         
         int ancienNbMarmottes = timer.getMarmottes().size();
         jeu.ajouterEtDeplacerMarmotteAlea(timer); 
@@ -133,7 +134,7 @@ public class JeuMarmotteHunterTest {
         Monde monde = mock(Monde.class);
         
         when(timer.getMonde()).thenReturn(monde);
-        when(monde.getCaseVideAliatoire()).thenReturn(null);      
+        when(monde.getCaseVideAliatoire(any(Random.class))).thenReturn(null);      
         
         int ancienNbMarmottes = timer.getMarmottes().size();
         jeu.ajouterEtDeplacerMarmotteAlea(timer); 
