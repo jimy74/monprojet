@@ -5,6 +5,7 @@
  */
 package ch.hesge.paris.marmotte;
 
+import java.util.Random;
 import java.util.TimerTask;
 import javax.swing.SwingUtilities;
 
@@ -52,7 +53,7 @@ public class JeuMarmotteHunter {
     }
 
     public void ajouterEtDeplacerMarmotteAlea(TimerPerso p_timer) {
-        Case caseAlea = p_timer.getMonde().getCaseVideAliatoire();
+        Case caseAlea = p_timer.getMonde().getCaseVideAliatoire(new Random());
         if (caseAlea != null) {
             p_timer.getMarmottes().add(new Marmotte(param.getPvMarmotte(), caseAlea));
         } else {

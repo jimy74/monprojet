@@ -31,11 +31,11 @@ public class Monde extends FramePerso{
      * Doit impérativement trouver une case aléatoirement
      * @return
      */
-    public Case getCaseVideAliatoire() {      
+    public Case getCaseVideAliatoire(Random alea) {      
         boolean caseVideTrouve = false; 
         while (!caseVideTrouve)
         {
-            Random alea = new Random();
+            
             for (Case uneCase : getCases())
             {
                 if (uneCase.isVide())
