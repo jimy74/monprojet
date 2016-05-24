@@ -30,7 +30,7 @@ public class FramePerso extends JFrame implements ActionListener{
     private int tailleY;
     private JPanel zoneAffichage = new JPanel();
     private JPanel zoneJeu = new JPanel();
-    private Label lblTemps = new Label("Temps : 0 seconde");
+    private Label lblTemps = new Label("Temps : 0 secondes");
 
     //Constructeur
     public FramePerso(int tailleX, int tailleY) {

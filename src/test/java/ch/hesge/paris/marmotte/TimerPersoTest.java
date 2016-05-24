@@ -199,28 +199,18 @@ public class TimerPersoTest {
         assertTrue(uneDifEmp == timer.getDifficulteEmperique());
     } 
     
-    @Ignore
-    @Test
-    public void cancel_cancel_le_timer_donc_le_temps_ne_change_plus(){
-        
-        timer.cancel();
-     
-        String temps1 = timer.getMonde().getLblTemps();      
-              
-        try {
-            TimeUnit.SECONDS.sleep(1);
 
-        } catch (InterruptedException ex) {
-            Logger.getLogger(TimerPersoTest.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        timer.afficherTemps();
-        String temps2 = timer.getMonde().getLblTemps();
+    @Test
+    public void cancel_cancel_le_timer_donc_le_temps_se_met_a_0(){               
         
-        System.out.println(temps1);
-        System.out.println(temps2);
-         //assertFalse(timer.isMarche()); //pour peutetre y voir plus clair ..
-         
-        assertEquals(temps1,temps2);
+        String tempsAvant = timer.getMonde().getLblTemps();
+        timer.cancel();
+                
+        timer.afficherTemps();
+        String temps = timer.getMonde().getLblTemps();
+       
+        if (!tempsAvant.equals("Temps : 0 secondes")) 
+            assertEquals(temps,"Temps : 0 secondes");
         
 
     }        
