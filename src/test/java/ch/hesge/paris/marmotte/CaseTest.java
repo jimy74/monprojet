@@ -1,6 +1,9 @@
 package ch.hesge.paris.marmotte;
 
+import java.awt.Insets;
 import javax.swing.ImageIcon;
+import org.junit.Assert;
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 import org.testng.annotations.Test;
@@ -33,7 +36,7 @@ public class CaseTest {
     }
 
     @Test
-    public void isVide_true_si_imgHerbe() {
+    public void setVide_true_si_imgHerbe() {
         c.setVide(true);
         String nomCompletImg = ((ImageIcon) c.getIcon()).getDescription();
         String nomImg = nomCompletImg.substring(nomCompletImg.lastIndexOf("/") + 1);
@@ -41,10 +44,25 @@ public class CaseTest {
     }
 
     @Test
-    public void isVide_false_si_imgMarmotte1Point() {
+    public void setVide_false_si_imgMarmotte1Point() {
         c.setVide(false);
         String nomCompletImg = ((ImageIcon) c.getIcon()).getDescription();
         String nomImg = nomCompletImg.substring(nomCompletImg.lastIndexOf("/") + 1);
         assertTrue(nomImg.equals("ImageMarmotte1Point.png"));
     }
+    
+    @Test
+    public void nouvelleCase_est_vide_par_defaut(){
+        assertTrue(c.isVide());
+    }
+    
+    @Test
+    public void nouvelleCase_est_sans_marges_par_defaut(){
+        assertEquals(c.getMargin(),new Insets(0, 0, 0, 0));
+    }
+    
+    @Test
+    public void nouvelleCase_na_pas_de_bordure_par_defaut(){
+        Assert.assertNull(c.getBorder());
+    }    
 }

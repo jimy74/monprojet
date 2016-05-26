@@ -31,7 +31,7 @@ public class Case extends JButton{
         this.setMargin(new Insets(0, 0, 0, 0));
         this.setBorder(null);
     }
-
+    
     /**
      *
      * @return
