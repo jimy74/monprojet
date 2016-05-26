@@ -165,5 +165,10 @@ public class JeuMarmotteHunterTest {
         
         jeu.testFin(1);      
         Assert.assertTrue(jeu.getTimer().isMarche());
-    }  
+    } 
+      
+       @Test
+      public void instancer_le_jeu_lance_le_timer() {
+             Assert.assertTrue(jeu.getTimer().isMarche());
+    }      
 }
