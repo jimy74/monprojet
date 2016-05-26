@@ -56,10 +56,20 @@ public class MarmotteTest {
     }
     
      @Test
-    public void setPv_1_donc_getPv_1() {
+    public void setPv_definit_ca_valeur() {
         int pv = 1;
         marmotte.setPv(pv);
         assertTrue(marmotte.getPv() == pv);
 
-    }   
+    } 
+    
+         @Test
+    public void setMaCase_vide_AncienneCase_qui_etait_pleine() {
+    
+        assertFalse(caseDepart.isVide());
+        
+        marmotte.setMaCase(caseChangee);
+        
+        assertTrue(caseDepart.isVide());
+    }  
 }

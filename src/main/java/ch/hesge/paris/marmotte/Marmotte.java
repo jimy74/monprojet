@@ -19,11 +19,12 @@ public class Marmotte {
     /**
      *
      * @param pv
+     * @param saCase
      */
     public Marmotte(int pv, Case saCase) {
         this.pv = pv;
-        saCase.setVide(false);
-        this.maCase = saCase;
+        this.maCase = saCase;                
+        maCase.setVide(false);
     }
 
     /**
@@ -46,7 +47,7 @@ public class Marmotte {
      *
      * @param maCase
      */
-    public void setMaCase(Case maCase) {
+    public void setMaCase(Case maCase) {   
         this.maCase.setVide(true);
         this.maCase = maCase;                
         maCase.setVide(false);
