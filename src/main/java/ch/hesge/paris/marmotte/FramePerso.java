@@ -6,7 +6,6 @@ import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Random;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JPanel;
@@ -20,7 +19,7 @@ import javax.swing.JPanel;
  *
  * @author PARIS_JIMMY-ESIG
  */
-public class FramePerso extends JFrame implements ActionListener{
+public class FramePerso extends JFrame /*implements ActionListener*/{
 
 //Déclaration des attributs
     //Tableau de cases
@@ -28,8 +27,8 @@ public class FramePerso extends JFrame implements ActionListener{
 
     private int tailleX;
     private int tailleY;
-    private JPanel zoneAffichage = new JPanel();
-    private JPanel zoneJeu = new JPanel();
+    protected JPanel zoneAffichage = new JPanel();
+    protected JPanel zoneJeu = new JPanel();
     private Label lblTemps = new Label("Temps : 0 secondes");
 
     //Constructeur
@@ -47,7 +46,7 @@ public class FramePerso extends JFrame implements ActionListener{
         afficherForm();
     }
     public void initConfigForm(){
-                setDefaultCloseOperation(EXIT_ON_CLOSE);      
+        setDefaultCloseOperation(EXIT_ON_CLOSE);      
         setResizable(false);  
         setLayout(new BorderLayout ());
     }
@@ -97,14 +96,16 @@ public class FramePerso extends JFrame implements ActionListener{
             for (int x = 1; x <= tailleX; x++) {
                 Case nouvelleCase = new Case(x, y);
                 cases.add(nouvelleCase); //ajoute la nouvelle case dans la liste de cases
-                nouvelleCase.addActionListener(this); //lie la gestion d'événement au monde
+                //nouvelleCase.addActionListener(this); //lie la gestion d'événement au monde
                 zoneJeu.add(nouvelleCase); //ajoute la case au monde
             }
 
         } 
     }
-
+    
+    /* Pour la future gesiton du clique
     public void actionPerformed(ActionEvent ae) {
         System.out.println("gestion du click ... à développer");
     }
+    */
 }
