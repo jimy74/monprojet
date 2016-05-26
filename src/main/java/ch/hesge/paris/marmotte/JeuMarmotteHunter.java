@@ -60,7 +60,7 @@ public class JeuMarmotteHunter {
             param.reduirePoint(1); 
             testFin(param.getScore());
         }
-        p_timer.deplacerMarmottes();
+        p_timer.deplacerMarmottes(new Outil(), p_timer.getMonde());
         p_timer.afficherTemps();
     }
 
