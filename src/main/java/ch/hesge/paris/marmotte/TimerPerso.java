@@ -23,7 +23,7 @@ public class TimerPerso extends Timer {
     private double difficulteEmperique; //force de réduction du temps de rappel
     private int temps; //est le temps de rappel du timer
     private Monde monde;//monde principale, qui connait les cases
-    private ArrayList<Marmotte> marmottes; //les marmottes, qui connaissent leurs cases
+    protected ArrayList<Marmotte> marmottes; //les marmottes, qui connaissent leurs cases
     private boolean marche = false;
 
     SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss dd MM yyyy");
@@ -92,13 +92,6 @@ public class TimerPerso extends Timer {
         this.difficulteEmperique = difficulteEmperique;
     }
 
-    /**
-     *
-     */
-    public void printMonde() {
-
-    }
-
     @Override
     public void cancel() {
         super.cancel();
@@ -107,13 +100,6 @@ public class TimerPerso extends Timer {
 
     public Boolean isMarche() {
         return marche;
-    }
-
-    /**
-     *
-     */
-    public void afficherScore() {
-
     }
 
     /**
@@ -129,13 +115,13 @@ public class TimerPerso extends Timer {
         monde.setLblTemps(difference + " secondes");
     }
 
-    public void deplacerMarmottes() {
+    public void deplacerMarmottes(Outil o, Monde p_monde) {
         for (Marmotte marmotte : marmottes) {
             Case maCase = marmotte.getMaCase();
-            ArrayList<Case> cases = monde.getCases();
+            ArrayList<Case> cases = p_monde.getCases();
             for (Case uneCase : cases) {
                 //si marmotte à une case vide directement à proximité
-                if (uneCase.isVide() && Math.abs(uneCase.getPositionX() - maCase.getPositionX()) == 1 && Math.abs(uneCase.getPositionY() - maCase.getPositionY()) == 1) {
+                if (uneCase.isVide() && o.abs(o.soustraction(uneCase.getPositionX(),maCase.getPositionX())) == 1 && o.abs(o.soustraction(uneCase.getPositionY(),maCase.getPositionY())) == 1) {
                     marmotte.setMaCase(uneCase);
                 }
             }
