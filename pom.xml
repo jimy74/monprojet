@@ -9,15 +9,15 @@
 
     <build>
         
-    <pluginManagement>
-    <plugins>
-      <plugin>
-        <groupId>org.sonarsource.scanner.maven</groupId>
-        <artifactId>sonar-maven-plugin</artifactId>
-        <version>3.0.1</version>
-      </plugin>
-    </plugins>
-  </pluginManagement>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.sonarsource.scanner.maven</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>3.0.1</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
             
 
         <!-- GIT COMMIT ID PLUGIN CONFIGURATION -->
@@ -110,13 +110,13 @@
                     </execution>
                 </executions>
             </plugin> 
-<!--          
-            <plugin>
-                <groupId>org.sonarsource.scanner.maven</groupId>
-                <artifactId>sonar-maven-plugin</artifactId>
-                <version>3.0.1</version>
-            </plugin> 
- -->
+            <!--          
+                       <plugin>
+                           <groupId>org.sonarsource.scanner.maven</groupId>
+                           <artifactId>sonar-maven-plugin</artifactId>
+                           <version>3.0.1</version>
+                       </plugin> 
+            -->
 
                                                 
         </plugins>
@@ -133,7 +133,7 @@
             <groupId>org.pitest</groupId>
             <artifactId>pitest-maven</artifactId>
             <version>1.1.9</version>
-        </dependency>                
+        </dependency>              
         <!-- LIE A LA DEFINITION DU MAIN -->
         <dependency>
             <groupId>commons-lang</groupId>
