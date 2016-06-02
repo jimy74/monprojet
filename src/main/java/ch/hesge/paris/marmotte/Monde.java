@@ -27,13 +27,26 @@ public class Monde extends FramePerso{
     }
 
 
+    public boolean toutesCasesPleines(){
+        for (Case uneCase : getCases()){
+            if (uneCase.isVide())
+                return false;
+        }
+        return true;
+        
+                        
+                    
+    }
+            
     /**
      * Doit impérativement trouver une case aléatoirement
      * @return
      */
-    public Case getCaseVideAliatoire(Random alea) {      
-        boolean caseVideTrouve = false; 
-        while (!caseVideTrouve)
+    public Case getCaseVideAliatoire(Random alea) {    
+        if (toutesCasesPleines())
+            return null;
+        
+        while (true)
         {
             
             for (Case uneCase : getCases())
@@ -42,13 +55,11 @@ public class Monde extends FramePerso{
                 {
                     //Si la case est bien Ã  la position trouvée aléatoirement
                     if (alea.nextInt(getTailleX()) + 1 == uneCase.getPositionX() && (alea.nextInt(getTailleY()) + 1 == uneCase.getPositionY())) {
-                        caseVideTrouve = true; 
                         return uneCase; //la case est retenue
                     }
                 }
             } 
         }
-        return null;
     }
 
 }
