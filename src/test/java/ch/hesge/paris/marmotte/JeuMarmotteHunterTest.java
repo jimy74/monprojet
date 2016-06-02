@@ -4,25 +4,16 @@ import java.util.ArrayList;
 import java.util.Random;
 import org.junit.Assert;
 import org.junit.Ignore;
-import org.mockito.Mockito;
-import static org.testng.Assert.assertFalse;
 import org.testng.annotations.Test;
 import static org.testng.Assert.assertTrue;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-
 import static org.mockito.Mockito.*;
-import static org.testng.Assert.assertNotNull;
 
 public class JeuMarmotteHunterTest {
 
     private JeuMarmotteHunter jeu;
     private Parametres p;
-
-    @BeforeClass
-    public void setUpGlobal() {
-
-    }
 
     @BeforeMethod
     public void setUp() {
@@ -37,46 +28,7 @@ public class JeuMarmotteHunterTest {
     
 /* ****************************************************************************************************
     Test de ajouterEtDeplacerMarmotteAlea() 
-**************************************************************************************************** */
-    
-    // /!\ tests d'intégrations MAL ECRIT , Voir prochain cours
-    @Ignore
-    @Test
-    public void ajouterEtDeplacerMarmotteAlea_deplace_une_marmotte_si_place() {
-        
-        int nbMarmottesAvant = jeu.getTimer().getMarmottes().size();
-        int nbMarmottesMax = jeu.getMonde().getTailleX() * jeu.getMonde().getTailleY();
-
-        ArrayList<String> alPositionsAvant = new ArrayList<String>();
-        for (Marmotte m : jeu.getTimer().getMarmottes()) {
-            alPositionsAvant.add(m.getMaCase().getPositionX() + "" + m.getMaCase().getPositionY());
-        }
-        jeu.ajouterEtDeplacerMarmotteAlea(jeu.getTimer());
-        ArrayList<String> alPositionsApres = new ArrayList<String>();
-        for (Marmotte m : jeu.getTimer().getMarmottes()) {
-            alPositionsApres.add(m.getMaCase().getPositionX() + "" + m.getMaCase().getPositionY());
-        }
-
-        assertTrue(!alPositionsAvant.equals(alPositionsApres) || nbMarmottesAvant == nbMarmottesMax || nbMarmottesAvant <= 0);
-                      
-
-    }
-
-    // /!\ tests d'intégrations MAL ECRIT , Voir prochain cours
-    @Ignore
-    @Test
-    public void ajouterEtDeplacerMarmotteAlea_reduit_score_si_plus_grand_que_0_et_monde_rempli() {
-
-        int nbMarmottesAvant = jeu.getTimer().getMarmottes().size();
-        int nbMarmottesMax = jeu.getMonde().getTailleX() * jeu.getMonde().getTailleY();
-
-        int ancienScore = jeu.getParametres().getScore();
-
-        jeu.ajouterEtDeplacerMarmotteAlea(jeu.getTimer());
-        if (ancienScore > 0 && nbMarmottesAvant == nbMarmottesMax) {
-            assertTrue(ancienScore < jeu.getParametres().getScore());
-        }
-    }     
+**************************************************************************************************** */    
     
     // Exemple fait avec Nicolas Frankel lors du cours
     @Test
