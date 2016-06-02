@@ -102,10 +102,4 @@ public class FramePerso extends JFrame /*implements ActionListener*/{
 
         } 
     }
-    
-    /* Pour la future gesiton du clique
-    public void actionPerformed(ActionEvent ae) {
-        System.out.println("gestion du click ... à développer");
-    }
-    */
 }
