@@ -5,9 +5,6 @@
  */
 package ch.hesge.paris.marmotte;
 
-import java.util.*;
-import java.io.*;
-
 /**
  *
  * @author ANFELONI-KYLE-ESIG support by JIMMY PARIS

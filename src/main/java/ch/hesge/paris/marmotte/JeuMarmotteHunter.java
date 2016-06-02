@@ -15,8 +15,8 @@ import javax.swing.SwingUtilities;
  */
 public class JeuMarmotteHunter {
 
-    private Parametres param;
-    private TimerPerso timer;
+    private final Parametres param;
+    private final TimerPerso timer;
 
     public JeuMarmotteHunter(Parametres param, TimerPerso timer) {
         this.param = param;
@@ -33,21 +33,20 @@ public class JeuMarmotteHunter {
                 new TimerPerso(new Monde(p.getMondeTailleX(), p.getMondeTailleY()), p.getVitesseDifficulteEmperique(), p.getVitesseDifficulte()));
     }
 
-    public void lancerTimer(TimerPerso pTimer) {   
-        final TimerPerso fTimer = pTimer;
+    public void lancerTimer(TimerPerso timer) {   
         //Définit une action Ã  répéter par le timer
         TimerTask actionARepetee = new TimerTask() {
             @Override
             public void run() {
                 SwingUtilities.invokeLater(() -> {
-                    ajouterEtDeplacerMarmotteAlea(fTimer);
+                    ajouterEtDeplacerMarmotteAlea(timer);
                 });
 
             }
         };
         
         //Fait répéter l'action par le timer
-        fTimer.scheduleAtFixedRate(actionARepetee, (long) fTimer.getDifficulteEmperique(), fTimer.getTemps());
+        timer.scheduleAtFixedRate(actionARepetee, (long) timer.getDifficulteEmperique(), timer.getTemps());
     }
 
     public void ajouterEtDeplacerMarmotteAlea(TimerPerso p_timer) {
