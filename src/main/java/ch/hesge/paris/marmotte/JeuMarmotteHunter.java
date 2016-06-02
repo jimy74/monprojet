@@ -29,7 +29,7 @@ public class JeuMarmotteHunter {
      */
     public static void main(String[] args) {
         Parametres p = new Parametres();
-        new JeuMarmotteHunter(p,
+        JeuMarmotteHunter jeu = new JeuMarmotteHunter(p,
                 new TimerPerso(new Monde(p.getMondeTailleX(), p.getMondeTailleY()), p.getVitesseDifficulteEmperique(), p.getVitesseDifficulte()));
     }
 
