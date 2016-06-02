@@ -22,8 +22,6 @@ public class Parametres {
     private int mondeTailleX = 4;
     private int mondeTailleY = 4;
 
-    public Parametres() {
-    }
     /**
      *
      * @param vitesseDifficulte
