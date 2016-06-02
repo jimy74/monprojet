@@ -5,8 +5,6 @@
  */
 package ch.hesge.paris.marmotte;
 
-import javax.swing.ImageIcon;
-
 /**
  *
  * @author DA_SAUDE_DAVID-ESIG

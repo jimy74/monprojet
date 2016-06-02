@@ -1,14 +1,6 @@
 package ch.hesge.paris.marmotte;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import java.awt.Label;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.Random;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
