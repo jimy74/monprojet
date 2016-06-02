@@ -23,7 +23,7 @@ public class FramePerso extends JFrame /*implements ActionListener*/{
 
 //Déclaration des attributs
     //Tableau de cases
-    private ArrayList<Case> cases = new ArrayList<Case>(); //avec instanciation direct pour ne pas le faire avant utilisation
+    private ArrayList<Case> cases = new ArrayList<>(); //avec instanciation direct pour ne pas le faire avant utilisation
 
     private int tailleX;
     private int tailleY;
