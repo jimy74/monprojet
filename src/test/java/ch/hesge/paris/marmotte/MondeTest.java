@@ -1,10 +1,12 @@
 package ch.hesge.paris.marmotte;
 
+import java.util.ArrayList;
 import java.util.Random;
 import org.junit.Ignore;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import static org.testng.Assert.assertFalse;
 import org.testng.annotations.Test;
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertTrue;
@@ -35,9 +37,25 @@ public class MondeTest {
 
         Case caseTrouvee = monde.getCaseVideAliatoire(alea);
 
-        Case caseTrouvee2 = monde.getCaseVideAliatoire(alea);
-
         assertTrue(caseTrouvee.getPositionX() == tailleRandom + 1 && caseTrouvee.getPositionY() == tailleRandom + 1);
 
     }
+    /*
+    @Ignore
+    @Test
+    public void toutesCasesPleines_renvoi_vrai_si_toutes_cases_pleines(){
+        Case c = new Case(1,1);
+        c.setVide(false);
+        ArrayList alCasesPrefait = new ArrayList();
+        alCasesPrefait.add(c);
+        ArrayList alCases = monde.getCases(); 
+        alCases = alCasesPrefait;
+        assertTrue(monde.toutesCasesPleines());
+    }
+   
+     @Ignore   
+    @Test
+    public void toutesCasesPleines_renvoi_faux_si_pas_toutes_cases_pleines(){
+        assertFalse(monde.toutesCasesPleines());
+    }    */
 }
